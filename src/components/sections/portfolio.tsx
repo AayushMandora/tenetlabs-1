@@ -17,7 +17,7 @@ export function PortfolioSection() {
         {siteContent.caseStudies.items.map((project) => (
           <StaggerItem key={project.name} className="h-full">
             <article className={cn(panelBase, panelHover, "group relative h-full flex flex-col overflow-hidden rounded-none p-0")}>
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.08),transparent_60%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.05),transparent_60%)]" />
 
               {/* Decorative Abstract Skeleton Header */}
               <div className="relative h-40 w-full border-b border-white/5 bg-[#0f0f14] px-6 pt-6 overflow-hidden">
@@ -26,7 +26,7 @@ export function PortfolioSection() {
                   <div className="h-28 w-40 rounded-none border border-white/10 bg-white/[0.02]" />
                   <div className="space-y-3 pt-4">
                     <div className="h-2.5 w-16 rounded-none bg-[var(--accent-primary)]/20" />
-                    <div className="h-2.5 w-24 rounded-none bg-[#10b981]/20" />
+                    <div className="h-2.5 w-24 rounded-none bg-[var(--accent-secondary)]/20" />
                     <div className="h-2.5 w-12 rounded-none bg-white/10" />
                   </div>
                 </div>
@@ -37,7 +37,7 @@ export function PortfolioSection() {
                   Case Study
                 </div>
                 <h3 className="font-display text-[1.65rem] leading-tight text-[var(--text-100)]">{project.name}</h3>
-                <p className="mt-3 text-[0.95rem] font-medium text-[#10b981]">{project.tagline}</p>
+                <p className="mt-3 text-[0.95rem] font-medium text-[var(--accent-secondary)]">{project.tagline}</p>
 
                 <div className="mt-6 flex flex-1 flex-col justify-between">
                   <div className="space-y-4 rounded-none border border-white/5 bg-white/[0.02] p-4 backdrop-blur-md">

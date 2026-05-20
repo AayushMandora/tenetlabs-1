@@ -3,7 +3,7 @@ export interface NavItem {
   href: string;
 }
 
-export type AccentTone = "emerald" | "amber" | "mint";
+export type AccentTone = "bright" | "soft" | "muted";
 
 export interface SiteConfig {
   agencyName: string;
@@ -189,19 +189,19 @@ export const siteContent: SiteContent = {
           label: "Average Timeline",
           value: "28 days",
           note: "Market-ready MVP delivery sprint",
-          accent: "emerald",
+          accent: "bright",
         },
         {
           label: "On-Time Delivery",
           value: "95%",
           note: "Weekly milestones and transparent progress",
-          accent: "mint",
+          accent: "soft",
         },
         {
           label: "Support Cost Reduction",
           value: "60%",
           note: "AI chatbot and automation impact",
-          accent: "amber",
+          accent: "muted",
         },
       ],
     },
@@ -232,7 +232,7 @@ export const siteContent: SiteContent = {
         ],
         ctaLabel: "Explore Web Development",
         ctaHref: "#contact",
-        accent: "emerald",
+        accent: "bright",
       },
       {
         icon: "chat",
@@ -247,7 +247,7 @@ export const siteContent: SiteContent = {
         ],
         ctaLabel: "Build Your Chatbot",
         ctaHref: "#contact",
-        accent: "mint",
+        accent: "soft",
       },
       {
         icon: "automation",
@@ -262,7 +262,7 @@ export const siteContent: SiteContent = {
         ],
         ctaLabel: "Automate Your Workflow",
         ctaHref: "#contact",
-        accent: "amber",
+        accent: "muted",
       },
       {
         icon: "mvp",
@@ -277,7 +277,7 @@ export const siteContent: SiteContent = {
         ],
         ctaLabel: "Launch Your MVP",
         ctaHref: "#contact",
-        accent: "emerald",
+        accent: "bright",
       },
     ],
   },

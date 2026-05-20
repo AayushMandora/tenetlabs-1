@@ -65,7 +65,7 @@ export function CustomCursor() {
             y: mousePosition.y - 16,
             height: 32,
             width: 32,
-            border: "1px solid rgba(16, 185, 129, 0.4)",
+            border: "1px solid rgba(255, 255, 255, 0.35)",
             backgroundColor: "transparent",
         },
         hover: {
@@ -73,8 +73,8 @@ export function CustomCursor() {
             y: mousePosition.y - 24,
             height: 48,
             width: 48,
-            border: "1px solid rgba(16, 185, 129, 0.8)",
-            backgroundColor: "rgba(16, 185, 129, 0.08)",
+            border: "1px solid rgba(255, 255, 255, 0.65)",
+            backgroundColor: "rgba(255, 255, 255, 0.08)",
         },
     };
 
@@ -104,7 +104,7 @@ export function CustomCursor() {
 
             {/* Inner Dot */}
             <motion.div
-                className="pointer-events-none fixed top-0 left-0 z-[100] hidden h-1.5 w-1.5 rounded-full bg-[#10b981] lg:block"
+                className="pointer-events-none fixed top-0 left-0 z-[100] hidden h-1.5 w-1.5 rounded-full bg-white lg:block"
                 variants={dotVariants}
                 animate={isHovering ? "hover" : "default"}
                 transition={{
@@ -113,7 +113,7 @@ export function CustomCursor() {
                     duration: 0,
                 }}
                 style={{
-                    boxShadow: "0 0 8px rgba(16, 185, 129, 0.8)",
+                    boxShadow: "0 0 8px rgba(255, 255, 255, 0.65)",
                 }}
             />
         </>

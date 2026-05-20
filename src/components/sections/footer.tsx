@@ -39,7 +39,7 @@ export function FooterSection() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-none border border-white/10 bg-white/[0.02] text-white/50 transition-all hover:border-[#10b981]/50 hover:bg-[#10b981]/10 hover:text-[#10b981]"
+                  className="flex h-9 w-9 items-center justify-center rounded-none border border-white/10 bg-white/[0.02] text-white/50 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white"
                 >
                   {Icon ? <Icon className="h-4 w-4" /> : <span className="text-xs">{social.label}</span>}
                 </a>

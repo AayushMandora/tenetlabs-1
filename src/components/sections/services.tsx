@@ -8,17 +8,17 @@ import { cn } from "@/lib/cn";
 import { panelBase, panelHover } from "@/lib/ui-classes";
 
 const accentMap: Record<string, string> = {
-  blue: "text-[#10b981] border-[color:rgba(16,185,129,0.35)] shadow-[inset_0_0_12px_rgba(16,185,129,0.15)]",
-  amber: "text-[#10b981] border-[color:rgba(16,185,129,0.35)] shadow-[inset_0_0_12px_rgba(16,185,129,0.15)]",
-  mint: "text-[#10b981] border-[color:rgba(16,185,129,0.35)] shadow-[inset_0_0_12px_rgba(16,185,129,0.15)]",
-  emerald: "text-[#10b981] border-[color:rgba(16,185,129,0.35)] shadow-[inset_0_0_12px_rgba(16,185,129,0.15)]",
+  blue: "text-[var(--accent-primary)] border-white/20 shadow-[inset_0_0_12px_rgba(255,255,255,0.08)]",
+  muted: "text-[var(--accent-primary)] border-white/20 shadow-[inset_0_0_12px_rgba(255,255,255,0.08)]",
+  soft: "text-[var(--accent-primary)] border-white/20 shadow-[inset_0_0_12px_rgba(255,255,255,0.08)]",
+  bright: "text-[var(--accent-primary)] border-white/20 shadow-[inset_0_0_12px_rgba(255,255,255,0.08)]",
 };
 
 const accentDot: Record<string, string> = {
-  blue: "bg-[#10b981] shadow-[0_0_8px_#10b981]",
-  amber: "bg-[#10b981] shadow-[0_0_8px_#10b981]",
-  mint: "bg-[#10b981] shadow-[0_0_8px_#10b981]",
-  emerald: "bg-[#10b981] shadow-[0_0_8px_#10b981]",
+  blue: "bg-[var(--accent-primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)]",
+  muted: "bg-[var(--accent-primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)]",
+  soft: "bg-[var(--accent-primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)]",
+  bright: "bg-[var(--accent-primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)]",
 };
 
 function Icon({ type }: { type: ServiceIcon }) {
@@ -86,7 +86,7 @@ export function ServicesSection() {
 
       <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" delayChildren={0.05}>
         {siteContent.services.items.map((service, index) => {
-          const tone = service.accent ?? "emerald";
+          const tone = service.accent ?? "bright";
           const isWide = index === 0 || index === 3;
 
           return (
@@ -126,7 +126,7 @@ export function ServicesSection() {
                     </ul>
                     <a
                       href={service.ctaHref}
-                      className="mt-8 inline-flex items-center text-sm font-semibold text-[#10b981] transition hover:brightness-125"
+                      className="mt-8 inline-flex items-center text-sm font-semibold text-[var(--accent-primary)] transition hover:brightness-125"
                     >
                       {service.ctaLabel}
                       <svg className="ml-1.5 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -147,13 +147,13 @@ export function ServicesSection() {
                               <div className="flex gap-1.5">
                                 <div className="h-2.5 w-2.5 rounded-none bg-red-500/80" />
                                 <div className="h-2.5 w-2.5 rounded-none bg-yellow-500/80" />
-                                <div className="h-2.5 w-2.5 rounded-none bg-green-500/80" />
+                                <div className="h-2.5 w-2.5 rounded-none bg-neutral-300/80" />
                               </div>
                             </div>
                             {/* Content Grid */}
                             <div className="p-5 grid grid-cols-3 gap-4">
                               <div className="col-span-2 h-24 rounded-none bg-white/5 animate-pulse" />
-                              <div className="col-span-1 h-24 rounded-none border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 shadow-[0_0_15px_rgba(16,185,129,0.2)]" />
+                              <div className="col-span-1 h-24 rounded-none border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 shadow-[0_0_15px_rgba(255,255,255,0.12)]" />
                               <div className="col-span-3 space-y-3 pt-4">
                                 <div className="h-4 w-3/4 rounded-none bg-white/10" />
                                 <div className="h-4 w-1/2 rounded-none bg-white/5" />
@@ -180,7 +180,7 @@ export function ServicesSection() {
                               </div>
                               <div className="w-1/3 space-y-3">
                                 <div className="h-6 w-full rounded bg-white/5" />
-                                <div className="h-24 w-full rounded-none border border-[var(--accent-primary)]/40 bg-[var(--accent-primary)]/10 p-3 shadow-[0_0_20px_rgba(16,185,129,0.3)] animate-pulse">
+                                <div className="h-24 w-full rounded-none border border-[var(--accent-primary)]/40 bg-[var(--accent-primary)]/10 p-3 shadow-[0_0_20px_rgba(255,255,255,0.16)] animate-pulse">
                                   <div className="h-2 w-1/3 rounded-none bg-[var(--accent-primary)] mb-2" />
                                 </div>
                               </div>

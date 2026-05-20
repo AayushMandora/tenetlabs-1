@@ -34,13 +34,13 @@ import { panelBase } from "@/lib/ui-classes";
 /* ── Visual icon map for tech items ── */
 const techColors: Record<string, string> = {
   React: "#61dafb", "Next.js": "#ffffff", TypeScript: "#3178c6",
-  "Tailwind CSS": "#06b6d4", "Vue.js": "#42d392",
-  "Node.js": "#68a063", Python: "#ffd343", FastAPI: "#059669",
-  Express: "#c0c0c0", PostgreSQL: "#336791", MongoDB: "#47a248",
-  "OpenAI GPT-4": "#10a37f", "Anthropic Claude": "#c97c4a",
+  "Tailwind CSS": "#06b6d4", "Vue.js": "#c4c4c4",
+  "Node.js": "#d4d4d4", Python: "#ffd343", FastAPI: "#f5f5f5",
+  Express: "#c0c0c0", PostgreSQL: "#336791", MongoDB: "#a3a3a3",
+  "OpenAI GPT-4": "#e5e7eb", "Anthropic Claude": "#c97c4a",
   LangChain: "#ecb94a", "Vector Databases": "#8b5cf6", "Custom Models": "#a78bfa",
   AWS: "#ff9900", Vercel: "#ffffff", Docker: "#2496ed",
-  "CI/CD": "#4ade80", Serverless: "#f59e0b",
+  "CI/CD": "#f5f5f5", Serverless: "#f59e0b",
   Stripe: "#635bff", Zapier: "#ff4a00", Slack: "#4a154b",
   "CRM APIs": "#00aeef", "REST & GraphQL": "#e535ab",
 };
@@ -68,15 +68,15 @@ const techInitials: Record<string, string> = {
 
 const categoryAccents: Record<string, string> = {
   Frontend: "rgba(97,218,251,0.18)",
-  Backend: "rgba(104,160,99,0.18)",
-  "AI & ML": "rgba(16,185,129,0.18)",
+  Backend: "rgba(212,212,212,0.18)",
+  "AI & ML": "rgba(245,245,245,0.18)",
   Infrastructure: "rgba(36,150,237,0.18)",
   Integration: "rgba(99,91,255,0.18)",
 };
 const categoryGlow: Record<string, string> = {
   Frontend: "rgba(97,218,251,0.5)",
-  Backend: "rgba(104,160,99,0.5)",
-  "AI & ML": "rgba(16,185,129,0.5)",
+  Backend: "rgba(212,212,212,0.5)",
+  "AI & ML": "rgba(245,245,245,0.5)",
   Infrastructure: "rgba(36,150,237,0.5)",
   Integration: "rgba(99,91,255,0.5)",
 };

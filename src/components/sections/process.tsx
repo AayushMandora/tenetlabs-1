@@ -25,7 +25,7 @@ export function ProcessSection() {
               <p className="relative z-10 mt-1.5 text-sm font-medium text-[var(--text-muted)]">{step.timeline}</p>
               <p className="relative z-10 mt-4 text-[0.95rem] leading-relaxed text-[var(--text-soft)]">{step.description}</p>
               <div className="relative z-10 mt-auto rounded-none border border-white/5 bg-white/[0.02] p-4 backdrop-blur-md">
-                <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#10b981]">
+                <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--accent-primary)]">
                   Deliverable
                 </p>
                 <p className="mt-1.5 text-sm font-medium text-[var(--text-100)]">{step.deliverable}</p>

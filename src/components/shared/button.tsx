@@ -8,7 +8,7 @@ export interface ButtonProps
 
 const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary:
-    "border border-transparent bg-[linear-gradient(140deg,#059669,#047857)] text-white shadow-[0_0_20px_rgba(16,185,129,0.4)] hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(16,185,129,0.6)]",
+    "border border-white/20 bg-[#050505] text-white shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:-translate-y-0.5 hover:border-white/35 hover:bg-[#111111] hover:shadow-[0_0_30px_rgba(255,255,255,0.12)]",
   secondary:
     "border border-white/10 bg-white/[0.04] text-[var(--text-100)] hover:border-white/20 hover:bg-white/[0.09] backdrop-blur-sm",
   ghost:

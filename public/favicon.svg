@@ -3,18 +3,18 @@
   <rect width="512" height="512" fill="#060608" />
   
   <!-- F -->
-  <rect x="76" y="156" width="30" height="200" fill="#10b981" />
-  <rect x="106" y="156" width="50" height="30" fill="#10b981" />
-  <rect x="106" y="246" width="40" height="30" fill="#10b981" />
+  <rect x="76" y="156" width="30" height="200" fill="#e5e7eb" />
+  <rect x="106" y="156" width="50" height="30" fill="#e5e7eb" />
+  <rect x="106" y="246" width="40" height="30" fill="#e5e7eb" />
   
   <!-- A -->
-  <path d="M176 356V156H246V356H216V276H196V356H176ZM196 186H226V246H196V186Z" fill="#10b981" />
+  <path d="M176 356V156H246V356H216V276H196V356H176ZM196 186H226V246H196V186Z" fill="#e5e7eb" />
   
   <!-- F -->
-  <rect x="266" y="156" width="30" height="200" fill="#10b981" />
-  <rect x="296" y="156" width="50" height="30" fill="#10b981" />
-  <rect x="296" y="246" width="40" height="30" fill="#10b981" />
+  <rect x="266" y="156" width="30" height="200" fill="#e5e7eb" />
+  <rect x="296" y="156" width="50" height="30" fill="#e5e7eb" />
+  <rect x="296" y="246" width="40" height="30" fill="#e5e7eb" />
   
   <!-- 0 -->
-  <path d="M366 156H436V356H366V156ZM396 186V326H406V186H396Z" fill="#10b981" />
+  <path d="M366 156H436V356H366V156ZM396 186V326H406V186H396Z" fill="#e5e7eb" />
 </svg>

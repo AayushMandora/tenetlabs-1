@@ -48,7 +48,7 @@ export function PricingSection() {
               <article
                 className={cn(
                   "relative flex h-full flex-col overflow-hidden rounded-none border border-white/5 bg-[#0a0a0b] p-8",
-                  plan.featured && "border-[#10b981]/30 shadow-[0_0_40px_rgba(16,185,129,0.08)] bg-[#07130e]"
+                  plan.featured && "border-white/20 shadow-[0_0_40px_rgba(255,255,255,0.08)] bg-[#09090a]"
                 )}
               >
                 {/* Top visual banner */}
@@ -56,11 +56,11 @@ export function PricingSection() {
                   <div className="flex w-full items-start justify-between">
                     <div className="flex flex-col gap-3">
                       {plan.featured && (
-                        <span className="w-fit rounded-none border border-[#10b981]/20 bg-[#10b981]/10 px-2.5 py-1 text-[0.65rem] font-medium tracking-wide text-[#10b981]">
+                        <span className="w-fit rounded-none border border-white/20 bg-white/10 px-2.5 py-1 text-[0.65rem] font-medium tracking-wide text-[var(--accent-primary)]">
                           Popular
                         </span>
                       )}
-                      <div className="flex h-10 w-10 items-center justify-center rounded-none bg-[#10b981]/10 text-[#10b981]">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-none bg-white/10 text-[var(--accent-primary)]">
                         <PlanIcon name={plan.name} />
                       </div>
                     </div>
@@ -102,7 +102,7 @@ export function PricingSection() {
                   <ul className="grid grid-cols-1 gap-3.5">
                     {plan.includes.map((item) => (
                       <li key={item} className="flex items-center gap-3">
-                        <svg className="h-4 w-4 shrink-0 text-[#10b981]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="h-4 w-4 shrink-0 text-[var(--accent-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
                         <span className="text-[0.85rem] text-[var(--text-soft)]">{item}</span>
@@ -116,7 +116,7 @@ export function PricingSection() {
                       className={cn(
                         "flex w-full items-center justify-center rounded-none px-4 py-3 text-sm font-semibold transition-all duration-200",
                         plan.featured
-                          ? "bg-[#10b981] text-black hover:bg-[#059669]"
+                          ? "border border-white/20 bg-[#050505] text-white hover:border-white/35 hover:bg-[#111111]"
                           : "bg-white/5 text-white hover:bg-white/10"
                       )}
                     >
@@ -138,7 +138,7 @@ export function PricingSection() {
               key={addon}
               className="flex items-center gap-2 rounded-none border border-white/5 bg-[#0a0a0b] px-4 py-2.5 transition-colors hover:border-white/10"
             >
-              <span className="text-[#10b981] font-bold text-lg leading-none">+</span>
+              <span className="text-[var(--accent-primary)] font-bold text-lg leading-none">+</span>
               <span className="text-[0.85rem] font-medium text-white">{split[0]}</span>
               {split[1] && <span className="text-[0.85rem] text-white/50">:{split[1]}</span>}
             </div>

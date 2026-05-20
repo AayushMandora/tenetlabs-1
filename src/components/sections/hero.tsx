@@ -9,9 +9,9 @@ import { cn } from "@/lib/cn";
 import { panelBase, panelHover, shimmerLine } from "@/lib/ui-classes";
 
 const accentMap = {
-  emerald: "text-[var(--accent-primary)]",
-  amber: "text-[#10b981]",
-  mint: "text-[var(--accent-support)]",
+  bright: "text-[var(--accent-primary)]",
+  muted: "text-[var(--accent-secondary)]",
+  soft: "text-[var(--accent-support)]",
 } as const;
 
 export function HeroSection() {
@@ -65,14 +65,14 @@ export function HeroSection() {
               className={cn(
                 panelBase,
                 panelHover,
-                "min-h-56 space-y-4 border-[color:rgba(16,185,129,0.3)] bg-[radial-gradient(360px_170px_at_100%_0%,rgba(16,185,129,0.15),transparent_66%),linear-gradient(160deg,rgba(15,15,20,0.9),rgba(5,5,10,0.9))] p-5"
+                "min-h-56 space-y-4 border-[color:rgba(255,255,255,0.18)] bg-[radial-gradient(360px_170px_at_100%_0%,rgba(255,255,255,0.08),transparent_66%),linear-gradient(160deg,rgba(15,15,20,0.9),rgba(5,5,10,0.9))] p-5"
               )}
             >
               <div className="flex items-center justify-between">
                 <p className="text-sm font-semibold text-[var(--text-100)]">
                   {siteContent.hero.visual.boardTitle}
                 </p>
-                <Badge className="border-[color:rgba(16,185,129,0.36)] bg-[rgba(16,185,129,0.12)] text-[var(--accent-primary)]">
+                <Badge className="border-[color:rgba(255,255,255,0.26)] bg-white/[0.08] text-[var(--accent-primary)]">
                   {siteContent.hero.visual.boardStatus}
                 </Badge>
               </div>
@@ -106,7 +106,7 @@ export function HeroSection() {
                     panelHover,
                     "h-full p-4",
                     isLast &&
-                    "bg-[radial-gradient(360px_150px_at_100%_0%,rgba(5,150,105,0.15),transparent_70%),linear-gradient(160deg,rgba(15,15,20,0.9),rgba(5,5,10,0.9))]"
+                    "bg-[radial-gradient(360px_150px_at_100%_0%,rgba(255,255,255,0.08),transparent_70%),linear-gradient(160deg,rgba(15,15,20,0.9),rgba(5,5,10,0.9))]"
                   )}
                 >
                   <p className="text-[0.69rem] uppercase tracking-[0.14em] text-[var(--text-dim)]">

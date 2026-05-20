@@ -93,7 +93,7 @@ export function CursorGlow() {
   return (
     <m.div
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-10 hidden h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(52,211,153,0.22),rgba(52,211,153,0.03),transparent_72%)] blur-xl lg:block"
+      className="pointer-events-none fixed left-0 top-0 z-10 hidden h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent_72%)] blur-xl lg:block"
       style={{ x: springX, y: springY }}
     />
   );
