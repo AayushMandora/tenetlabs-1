@@ -32,7 +32,7 @@ export function HeaderSection() {
     <header className="sticky top-0 z-40 border-b border-[var(--border-color)] bg-[var(--header-bg)] backdrop-blur-2xl">
       <div className="flex items-center justify-between gap-4 px-6 py-3.5 sm:px-10 md:px-16">
         <a href="#top" className="inline-flex items-center gap-3">
-          <img src="/logo.png" alt="TenetLabs Logo" className="h-8 w-8 object-cover rounded-none" />
+          <img src="/logo.svg" alt="TenetLabs Logo" className="h-8 w-8 object-contain rounded-none" />
           <span className="font-sans font-bold text-2xl tracking-widest text-[var(--text-100)]">
             TenetLabs
           </span>

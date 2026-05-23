@@ -21,12 +21,12 @@
   --header-bg: rgba(7, 7, 9, 0.95);
   --selection-bg: rgba(255, 255, 255, 0.24);
   
-  /* Adaptive Overlays & Glows */
-  --grid-color: rgba(255, 255, 255, 0.04);
-  --dots-color: rgba(255, 255, 255, 0.88);
-  --glow-1: rgba(255, 255, 255, 0.08);
-  --glow-2: rgba(180, 180, 180, 0.06);
-  --glow-3: rgba(255, 255, 255, 0.04);
+  /* Adaptive Overlays & Glows (Atmospheric LiveKit / Vapi dark mode) */
+  --grid-color: rgba(255, 85, 17, 0.04);
+  --dots-color: rgba(255, 85, 17, 0.12);
+  --glow-1: rgba(255, 85, 17, 0.07);
+  --glow-2: rgba(88, 86, 214, 0.05);
+  --glow-3: rgba(0, 128, 128, 0.04);
 }
 
 html[data-theme="light"] {

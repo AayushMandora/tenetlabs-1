@@ -27,7 +27,7 @@ export function FooterSection() {
       <div className="grid gap-4 rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)] p-6 sm:p-8 lg:grid-cols-[1.2fr_repeat(4,1fr)]">
         <article className="space-y-4">
           <a href="#top" className="inline-flex items-center gap-3">
-            <img src="/logo.png" alt="TenetLabs Logo" className="h-6 w-6 object-cover rounded-none" />
+            <img src="/logo.svg" alt="TenetLabs Logo" className="h-6 w-6 object-contain rounded-none" />
             <span className="font-sans font-bold text-2xl tracking-widest text-[var(--text-100)]">TenetLabs</span>
           </a>
           <p className="max-w-xs text-sm leading-relaxed text-[var(--text-muted)]">{siteContent.config.tagline}</p>
