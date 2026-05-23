@@ -30,32 +30,32 @@
 }
 
 html[data-theme="light"] {
-  --bg-950: #faf9f5; /* Warm alabaster */
-  --bg-900: #f4eee3; /* Soft rich ivory sand */
-  --surface-800: #ebdcc0; /* Soft warm border highlights */
-  --surface-700: #daccc0;
-  --text-100: #1b1713; /* Elegant warm charcoal/ink */
-  --text-soft: #3f3933;
-  --text-muted: #68615a;
-  --text-dim: #948d85;
+  --bg-950: #efece6; /* Warm premium stone parchment */
+  --bg-900: #e5e0d5; /* Deeper warm sand */
+  --surface-800: #dbd4c5; /* Rich warm border highlights */
+  --surface-700: #cbd1c5;
+  --text-100: #120f0d; /* High-contrast elegant warm ink */
+  --text-soft: #2e2823;
+  --text-muted: #5e564f;
+  --text-dim: #8a8177;
   --accent-primary: #ff5511; /* Luxury Vibrant Vermilion */
   --accent-secondary: #5856d6; /* Royal Violet */
   --accent-support: #008080; /* Elegant Deep Teal */
-  --border-color: rgba(27, 23, 19, 0.07);
-  --glow-color: rgba(255, 85, 17, 0.04);
-  --panel-bg: rgba(255, 255, 255, 0.78); /* High contrast glass */
-  --panel-hover-bg: rgba(255, 255, 255, 0.94);
-  --panel-border: rgba(27, 23, 19, 0.06);
-  --panel-hover-border: rgba(255, 85, 17, 0.25);
-  --header-bg: rgba(250, 249, 245, 0.96);
-  --selection-bg: rgba(255, 85, 17, 0.15);
+  --border-color: rgba(18, 15, 13, 0.10); /* More defined borders */
+  --glow-color: rgba(255, 85, 17, 0.06);
+  --panel-bg: rgba(255, 255, 255, 0.86); /* Crisp white glass against warm stone */
+  --panel-hover-bg: rgba(255, 255, 255, 0.96);
+  --panel-border: rgba(18, 15, 13, 0.08);
+  --panel-hover-border: rgba(255, 85, 17, 0.32);
+  --header-bg: rgba(239, 236, 230, 0.95);
+  --selection-bg: rgba(255, 85, 17, 0.18);
   
   /* Adaptive Overlays & Glows (Luxury Warm & Vibrant Light Mode) */
-  --grid-color: rgba(255, 85, 17, 0.035);
-  --dots-color: rgba(255, 85, 17, 0.09);
-  --glow-1: rgba(255, 85, 17, 0.08);
-  --glow-2: rgba(88, 86, 214, 0.07);
-  --glow-3: rgba(0, 128, 128, 0.06);
+  --grid-color: rgba(255, 85, 17, 0.045);
+  --dots-color: rgba(255, 85, 17, 0.11);
+  --glow-1: rgba(255, 85, 17, 0.09);
+  --glow-2: rgba(88, 86, 214, 0.08);
+  --glow-3: rgba(0, 128, 128, 0.07);
 }
 
 @theme inline {

@@ -9,6 +9,11 @@ export const seoMetadata: Metadata = {
   title: `${siteContent.config.agencyName} | MVPs in 28 Days`,
   description:
     "Custom web platforms and AI product engineering that helps founders ship market-ready MVPs in 28 days.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: `${siteContent.config.agencyName} | MVPs in 28 Days`,
     description:

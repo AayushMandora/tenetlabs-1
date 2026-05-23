@@ -30,10 +30,10 @@ export function HeaderSection() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--border-color)] bg-[var(--header-bg)] backdrop-blur-2xl">
-      <div className="flex items-center justify-between gap-4 px-6 py-3.5 sm:px-10 md:px-16">
-        <a href="#top" className="inline-flex items-center gap-3">
-          <img src="/logo.png" alt="TenetLabs Logo" className="h-8 w-8 object-cover rounded-full" />
-          <span className="font-sans font-bold text-2xl tracking-widest text-[var(--text-100)]">
+      <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-10 md:px-16">
+        <a href="#top" className="inline-flex items-center gap-2 sm:gap-3">
+          <img src="/logo.png" alt="TenetLabs Logo" className="h-6.5 w-6.5 sm:h-8 sm:w-8 object-cover rounded-full" />
+          <span className="font-sans font-bold text-lg sm:text-2xl tracking-widest text-[var(--text-100)]">
             TenetLabs
           </span>
         </a>
@@ -50,20 +50,26 @@ export function HeaderSection() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           <button
             onClick={toggleTheme}
-            className="flex h-10 w-10 cursor-pointer items-center justify-center border border-[var(--border-color)] bg-[var(--text-100)]/[0.02] text-[var(--text-soft)] transition duration-200 hover:bg-[var(--text-100)]/[0.06] hover:text-[var(--text-100)] focus:outline-none"
+            className="flex h-9 w-9 sm:h-10 sm:w-10 cursor-pointer items-center justify-center border border-[var(--border-color)] bg-[var(--text-100)]/[0.02] text-[var(--text-soft)] transition duration-200 hover:bg-[var(--text-100)]/[0.06] hover:text-[var(--text-100)] focus:outline-none"
             aria-label="Toggle Theme"
           >
             {theme === "dark" ? (
-              <Sun className="h-4.5 w-4.5" />
+              <Sun className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
             ) : (
-              <Moon className="h-4.5 w-4.5" />
+              <Moon className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
             )}
           </button>
 
-          <Button href={siteContent.config.calendlyUrl} variant="ghost" target="_blank" rel="noreferrer">
+          <Button
+            href={siteContent.config.calendlyUrl}
+            variant="ghost"
+            target="_blank"
+            rel="noreferrer"
+            className="max-[400px]:hidden text-xs py-2 px-3 sm:text-sm"
+          >
             Book a Demo
           </Button>
         </div>

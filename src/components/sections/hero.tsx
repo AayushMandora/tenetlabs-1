@@ -383,7 +383,7 @@ export function HeroSection() {
                             setUserInteracted(true);
                           }}
                           className={cn(
-                            "absolute px-3 py-1.5 border transition-all duration-300 flex items-center gap-2 cursor-pointer select-none rounded-none",
+                            "absolute p-2 sm:px-3 sm:py-1.5 border transition-all duration-300 flex items-center gap-2 cursor-pointer select-none rounded-none",
                             borderClass
                           )}
                           style={{
@@ -395,7 +395,7 @@ export function HeroSection() {
                           <div className="flex h-5 w-5 shrink-0 items-center justify-center">
                             {renderNodeIcon(node.id)}
                           </div>
-                          <div className="flex flex-col text-left">
+                          <div className="hidden sm:flex flex-col text-left">
                             <span className="text-[0.6rem] font-bold tracking-wide text-[var(--text-100)]">
                               {node.label}
                             </span>
