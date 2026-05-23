@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import { siteContent } from "@/content/site-content";
 
-export const siteUrl = "https://faf0.dev";
+export const siteUrl = "https://tenetlabs.dev";
 
 export const seoMetadata: Metadata = {
   metadataBase: new URL(siteUrl),

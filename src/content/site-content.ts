@@ -151,14 +151,13 @@ interface SiteContent {
 
 export const siteContent: SiteContent = {
   config: {
-    agencyName: "FAF0",
+    agencyName: "TenetLabs",
     tagline: "Launching tomorrow's products, today.",
-    email: "hello@faf0.dev",
+    email: "hello@tenetlabs.dev",
     location: "United States",
     responseTime: "Within 24 hours",
-    calendlyUrl: "https://calendly.com/faf0/intro-call",
+    calendlyUrl: "https://calendly.com/tenetlabs/intro-call",
     nav: [
-      { label: "Services", href: "#services" },
       { label: "Process", href: "#process" },
       { label: "Work", href: "#portfolio" },
       { label: "Pricing", href: "#pricing" },
@@ -175,7 +174,7 @@ export const siteContent: SiteContent = {
   },
   hero: {
     eyebrow: "28-Day Launch | 50+ Products Shipped | AI-Powered",
-    headline: "Ship Your MVP in 28 Days. Scale with AI.",
+    headline: "Ship Your MVP in 28 Days.",
     subheadline:
       "We build custom web platforms and intelligent AI solutions that turn your vision into market-ready products - fast.",
     primaryCta: { label: "Start Your Project", href: "#contact" },
@@ -563,8 +562,8 @@ export const siteContent: SiteContent = {
     subheading: "Let's turn your idea into reality. Book a free consultation to discuss your project.",
     primaryCta: {
       label: "Book a discovery call",
-      href: "https://calendly.com/faf0/intro-call",
+      href: "https://calendly.com/tenetlabs/intro-call",
     },
-    secondaryText: "Or email us at hello@faf0.dev",
+    secondaryText: "Or email us at hello@tenetlabs.dev",
   },
 };

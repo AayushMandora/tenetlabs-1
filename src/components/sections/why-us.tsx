@@ -17,8 +17,7 @@ export function WhyUsSection() {
         {siteContent.whyChooseUs.items.map((item) => (
           <StaggerItem key={item.title}>
             <article className={cn(panelBase, panelHover, "group relative h-full overflow-hidden rounded-none p-6 sm:p-8")}>
-              <div aria-hidden className="absolute left-0 top-0 h-1 w-full bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.45),transparent)] opacity-30 transition-opacity duration-500 group-hover:opacity-100" />
-              <div className="pointer-events-none absolute -bottom-10 -right-10 h-32 w-32 rounded-none bg-[var(--accent-primary)] opacity-0 blur-[50px] transition-opacity duration-500 group-hover:opacity-[0.15]" />
+              <div aria-hidden className="absolute left-0 top-0 h-1 w-full bg-[linear-gradient(90deg,transparent,var(--accent-primary),transparent)] opacity-30 transition-opacity duration-500 group-hover:opacity-100" />
               <h3 className="relative z-10 font-display text-2xl leading-tight text-[var(--text-100)]">
                 {item.title}
               </h3>

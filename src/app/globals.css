@@ -10,21 +10,62 @@
   --text-muted: #94a3b8;
   --text-dim: #64748b;
   --accent-primary: #f5f5f5;
-  /* Monochrome highlight */
   --accent-secondary: #d4d4d4;
-  /* Soft gray */
   --accent-support: #a3a3a3;
-  /* Muted gray */
+  --border-color: rgba(226, 239, 255, 0.08);
+  --glow-color: rgba(255, 255, 255, 0.03);
+  --panel-bg: rgba(10, 10, 11, 0.95);
+  --panel-hover-bg: rgba(16, 16, 18, 0.98);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --panel-hover-border: rgba(255, 255, 255, 0.20);
+  --header-bg: rgba(7, 7, 9, 0.95);
+  --selection-bg: rgba(255, 255, 255, 0.24);
+  
+  /* Adaptive Overlays & Glows */
+  --grid-color: rgba(255, 255, 255, 0.04);
+  --dots-color: rgba(255, 255, 255, 0.88);
+  --glow-1: rgba(255, 255, 255, 0.08);
+  --glow-2: rgba(180, 180, 180, 0.06);
+  --glow-3: rgba(255, 255, 255, 0.04);
+}
+
+html[data-theme="light"] {
+  --bg-950: #faf9f5; /* Warm alabaster */
+  --bg-900: #f4eee3; /* Soft rich ivory sand */
+  --surface-800: #ebdcc0; /* Soft warm border highlights */
+  --surface-700: #daccc0;
+  --text-100: #1b1713; /* Elegant warm charcoal/ink */
+  --text-soft: #3f3933;
+  --text-muted: #68615a;
+  --text-dim: #948d85;
+  --accent-primary: #ff5511; /* Luxury Vibrant Vermilion */
+  --accent-secondary: #5856d6; /* Royal Violet */
+  --accent-support: #008080; /* Elegant Deep Teal */
+  --border-color: rgba(27, 23, 19, 0.07);
+  --glow-color: rgba(255, 85, 17, 0.04);
+  --panel-bg: rgba(255, 255, 255, 0.78); /* High contrast glass */
+  --panel-hover-bg: rgba(255, 255, 255, 0.94);
+  --panel-border: rgba(27, 23, 19, 0.06);
+  --panel-hover-border: rgba(255, 85, 17, 0.25);
+  --header-bg: rgba(250, 249, 245, 0.96);
+  --selection-bg: rgba(255, 85, 17, 0.15);
+  
+  /* Adaptive Overlays & Glows (Luxury Warm & Vibrant Light Mode) */
+  --grid-color: rgba(255, 85, 17, 0.035);
+  --dots-color: rgba(255, 85, 17, 0.09);
+  --glow-1: rgba(255, 85, 17, 0.08);
+  --glow-2: rgba(88, 86, 214, 0.07);
+  --glow-3: rgba(0, 128, 128, 0.06);
 }
 
 @theme inline {
   --font-sans: var(--font-instrument);
-  --font-display: var(--font-syne);
+  --font-display: var(--font-instrument);
 }
 
 @layer base {
   * {
-    border-color: rgba(226, 239, 255, 0.08);
+    border-color: var(--border-color);
     scrollbar-width: none;
     /* Firefox */
     -ms-overflow-style: none;
@@ -73,7 +114,7 @@
   }
 
   ::selection {
-    background-color: rgba(255, 255, 255, 0.24);
+    background-color: var(--selection-bg);
     color: var(--text-100);
   }
 }
@@ -137,3 +178,13 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Logo inversion for monochrome SVGs in dark mode */
+.logo-monochrome {
+  filter: invert(1);
+}
+
+html[data-theme="light"] .logo-monochrome {
+  filter: invert(0);
+}
+

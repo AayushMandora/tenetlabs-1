@@ -8,11 +8,11 @@ export interface ButtonProps
 
 const variantClasses: Record<NonNullable<ButtonProps["variant"]>, string> = {
   primary:
-    "border border-white/20 bg-[#050505] text-white shadow-[0_0_20px_rgba(255,255,255,0.08)] hover:-translate-y-0.5 hover:border-white/35 hover:bg-[#111111] hover:shadow-[0_0_30px_rgba(255,255,255,0.12)]",
+    "border border-transparent bg-[var(--accent-primary)] text-[var(--bg-950)] shadow-[0_0_20px_var(--glow-1)] hover:-translate-y-0.5 hover:opacity-90",
   secondary:
-    "border border-white/10 bg-white/[0.04] text-[var(--text-100)] hover:border-white/20 hover:bg-white/[0.09] backdrop-blur-sm",
+    "border border-[var(--panel-border)] bg-[var(--border-color)] text-[var(--text-100)] hover:-translate-y-0.5 hover:bg-[var(--text-100)]/[0.08] backdrop-blur-sm",
   ghost:
-    "border border-white/5 bg-black/40 text-[var(--text-100)] hover:border-white/15 hover:bg-white/10 backdrop-blur-md",
+    "border border-[var(--panel-border)] bg-[var(--bg-950)]/40 text-[var(--text-100)] hover:border-[var(--panel-hover-border)] hover:bg-[var(--text-100)]/[0.04] backdrop-blur-md",
 };
 
 export function Button({

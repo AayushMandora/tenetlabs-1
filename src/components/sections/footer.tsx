@@ -24,11 +24,11 @@ const SocialIconMap: Record<string, React.ElementType> = {
 export function FooterSection() {
   return (
     <footer className="pt-6">
-      <div className="grid gap-4 rounded-none border border-white/5 bg-[#0a0a0b] p-6 sm:p-8 lg:grid-cols-[1.2fr_repeat(4,1fr)]">
+      <div className="grid gap-4 rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)] p-6 sm:p-8 lg:grid-cols-[1.2fr_repeat(4,1fr)]">
         <article className="space-y-4">
           <a href="#top" className="inline-flex items-center gap-3">
-            <img src="/logo.png" alt="FAF0 Logo" className="h-6 w-6 object-cover rounded-none" />
-            <span className="font-sans font-bold text-2xl tracking-widest text-white">FAF0</span>
+            <img src="/logo.png" alt="TenetLabs Logo" className="h-6 w-6 object-cover rounded-none" />
+            <span className="font-sans font-bold text-2xl tracking-widest text-[var(--text-100)]">TenetLabs</span>
           </a>
           <p className="max-w-xs text-sm leading-relaxed text-[var(--text-muted)]">{siteContent.config.tagline}</p>
           <div className="flex flex-wrap gap-2">
@@ -39,7 +39,7 @@ export function FooterSection() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="flex h-9 w-9 items-center justify-center rounded-none border border-white/10 bg-white/[0.02] text-white/50 transition-all hover:border-white/30 hover:bg-white/10 hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-none border border-[var(--panel-border)] bg-[var(--text-100)]/[0.02] text-[var(--text-muted)] transition-all hover:border-[var(--panel-hover-border)] hover:bg-[var(--text-100)]/[0.10] hover:text-[var(--text-100)]"
                 >
                   {Icon ? <Icon className="h-4 w-4" /> : <span className="text-xs">{social.label}</span>}
                 </a>

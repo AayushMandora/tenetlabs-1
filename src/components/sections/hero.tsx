@@ -1,124 +1,273 @@
-import { siteContent } from "@/content/site-content";
+"use client";
 
-import { Floating } from "@/components/motion/floating";
+import { useState, useEffect } from "react";
+import { m, AnimatePresence } from "framer-motion";
+
+import { siteContent } from "@/content/site-content";
 import { Reveal } from "@/components/motion/reveal";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { Badge } from "@/components/shared/badge";
 import { Button } from "@/components/shared/button";
+import { MouseGlow } from "@/components/motion/mouse-glow";
 import { cn } from "@/lib/cn";
-import { panelBase, panelHover, shimmerLine } from "@/lib/ui-classes";
 
-const accentMap = {
-  bright: "text-[var(--accent-primary)]",
-  muted: "text-[var(--accent-secondary)]",
-  soft: "text-[var(--accent-support)]",
-} as const;
+function MetricCountUp({ value }: { value: string }) {
+  const numericPart = parseInt(value.replace(/[^0-9]/g, ""), 10);
+  const suffixPart = value.replace(/[0-9]/g, "");
+
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (isNaN(numericPart)) return;
+    let start = 0;
+    const end = numericPart;
+    const duration = 1.0;
+    const totalMiliseconds = duration * 1000;
+    const stepTime = Math.max(Math.floor(totalMiliseconds / end), 12);
+
+    const timer = setInterval(() => {
+      start += 1;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(start);
+      }
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, [numericPart]);
+
+  return (
+    <span>
+      {count}
+      {suffixPart}
+    </span>
+  );
+}
 
 export function HeroSection() {
+  const [activeTab, setActiveTab] = useState<"dev" | "audit" | "deploy">("dev");
+
+  // Automated tab rotation simulation for interactive feel
+  useEffect(() => {
+    const tabs: ("dev" | "audit" | "deploy")[] = ["dev", "audit", "deploy"];
+    const interval = setInterval(() => {
+      setActiveTab((prev) => {
+        const nextIdx = (tabs.indexOf(prev) + 1) % tabs.length;
+        return tabs[nextIdx];
+      });
+    }, 6000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const tabContent = {
+    dev: {
+      title: "development.sh",
+      logs: [
+        "› npm run build --production",
+        "› Compiling next-edge functions...",
+        "› Injecting OpenAI / Anthropic routing middleware...",
+        "› Static components analysis: 42 files scanned.",
+        "› Bundle size: 68.4kb (100% within SLA bounds)",
+        "✔ Build successfully compiled in 1,840ms.",
+      ],
+      progress: 92,
+      phase: "Phase 3: Core AI Build",
+    },
+    audit: {
+      title: "lighthouse.audit",
+      logs: [
+        "› lighthouse-cli https://tenetlabs.dev/test",
+        "› Analyzing performance: FCP 0.4s, LCP 0.8s.",
+        "› Accessibility audits: 100% clean check.",
+        "› Best Practices: HTTP2, TLS 1.3, modern bundles.",
+        "› SEO score: 100/100 indexed, meta tags valid.",
+        "✔ Core Web Vitals passed with perfect scores.",
+      ],
+      progress: 100,
+      phase: "Phase 4: Optimization & SEO",
+    },
+    deploy: {
+      title: "deploy.env",
+      logs: [
+        "› vercel deploy --prod",
+        "› Creating build deployment instance...",
+        "› Binding production edge domains...",
+        "› Warm-up caching global edge nodes...",
+        "› SSL credentials validated. CDN synced.",
+        "✔ Deployment active at production-tenetlabs.vercel.app",
+      ],
+      progress: 100,
+      phase: "Phase 5: Live Launch",
+    },
+  };
+
   return (
     <section
       id="top"
-      className="relative overflow-hidden bg-transparent"
+      className="relative overflow-hidden bg-transparent py-12 lg:py-20"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-      />
+      {/* Two-column split layout */}
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-center">
+          {/* Left Column: Text & CTAs */}
+          <div className="lg:col-span-5 flex flex-col justify-center space-y-6 text-left">
+            <Stagger className="space-y-6 flex flex-col items-start" delayChildren={0.05} staggerChildren={0.09}>
+              <StaggerItem>
+                <h1 className="font-display text-[2.5rem] leading-[1.08] font-black tracking-tight text-[var(--text-100)] sm:text-5xl lg:text-[2.75rem] xl:text-[3.5rem]">
+                  {siteContent.hero.headline}
+                </h1>
+              </StaggerItem>
 
-      <div className="relative z-10 grid gap-8 lg:grid-cols-[1.06fr_0.94fr] lg:gap-6">
-        <Stagger className="space-y-6 lg:pt-2" delayChildren={0.05} staggerChildren={0.09}>
-          <StaggerItem>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent-support)]">
-              {siteContent.hero.eyebrow}
-            </p>
-          </StaggerItem>
-
-          <StaggerItem>
-            <h1 className="max-w-xl font-display text-[2.35rem] leading-[1.02] text-[var(--text-100)] sm:text-5xl lg:text-[4.15rem]">
-              {siteContent.hero.headline}
-            </h1>
-          </StaggerItem>
-
-          <StaggerItem>
-            <p className="max-w-xl text-[1.01rem] leading-relaxed text-[var(--text-muted)]">
-              {siteContent.hero.subheadline}
-            </p>
-          </StaggerItem>
-
-          <StaggerItem className="flex flex-wrap items-center gap-3 pt-1">
-            <Button href={siteContent.hero.primaryCta.href}>{siteContent.hero.primaryCta.label}</Button>
-            <Button href={siteContent.hero.secondaryCta.href} variant="secondary">
-              {siteContent.hero.secondaryCta.label}
-            </Button>
-          </StaggerItem>
-
-          <StaggerItem className="flex flex-wrap gap-2.5 pt-0.5">
-            {siteContent.config.trustBadges.map((badge) => (
-              <Badge key={badge}>{badge}</Badge>
-            ))}
-          </StaggerItem>
-        </Stagger>
-
-        <Reveal className="grid grid-cols-2 gap-3">
-          <Floating className="col-span-2" distance={8} duration={9.3} delay={0.06}>
-            <article
-              className={cn(
-                panelBase,
-                panelHover,
-                "min-h-56 space-y-4 border-[color:rgba(255,255,255,0.18)] bg-[radial-gradient(360px_170px_at_100%_0%,rgba(255,255,255,0.08),transparent_66%),linear-gradient(160deg,rgba(15,15,20,0.9),rgba(5,5,10,0.9))] p-5"
-              )}
-            >
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-[var(--text-100)]">
-                  {siteContent.hero.visual.boardTitle}
+              <StaggerItem>
+                <p className="max-w-lg text-[0.95rem] md:text-[1rem] leading-relaxed text-[var(--text-muted)] font-medium">
+                  {siteContent.hero.subheadline}
                 </p>
-                <Badge className="border-[color:rgba(255,255,255,0.26)] bg-white/[0.08] text-[var(--accent-primary)]">
-                  {siteContent.hero.visual.boardStatus}
-                </Badge>
-              </div>
-              <div className="space-y-3">
-                <span className={cn(shimmerLine, "block w-[92%]")} />
-                <span className={cn(shimmerLine, "block w-[75%]")} />
-                <span className={cn(shimmerLine, "block w-[87%]")} />
-              </div>
-              <div className="flex flex-wrap gap-2 pt-0.5">
-                {siteContent.hero.visual.boardChips.map((chip) => (
-                  <Badge key={chip}>{chip}</Badge>
-                ))}
-              </div>
-            </article>
-          </Floating>
+              </StaggerItem>
 
-          {siteContent.hero.visual.miniCards.map((card, index) => {
-            const isLast = index === siteContent.hero.visual.miniCards.length - 1;
+              <StaggerItem className="flex flex-wrap items-center gap-4 pt-2">
+                <Button href={siteContent.hero.primaryCta.href} className="px-8 py-3 text-xs font-bold uppercase tracking-widest">
+                  {siteContent.hero.primaryCta.label}
+                </Button>
+                <Button href={siteContent.hero.secondaryCta.href} variant="secondary" className="px-8 py-3 text-xs font-bold uppercase tracking-widest">
+                  {siteContent.hero.secondaryCta.label}
+                </Button>
+              </StaggerItem>
+            </Stagger>
+          </div>
 
-            return (
-              <Floating
-                key={card.label}
-                className={cn(isLast && "col-span-2")}
-                distance={6.8 + index}
-                duration={8.2 + index * 0.7}
-                delay={0.14 + index * 0.1}
+          {/* Right Column: Interactive Dashboard Mockup */}
+          <div className="lg:col-span-7 w-full flex items-center justify-center">
+            <Reveal className="w-full px-2 sm:px-0">
+              <MouseGlow
+                className="w-full rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)]"
+                containerClassName="flex flex-col h-full"
               >
-                <article
-                  className={cn(
-                    panelBase,
-                    panelHover,
-                    "h-full p-4",
-                    isLast &&
-                    "bg-[radial-gradient(360px_150px_at_100%_0%,rgba(255,255,255,0.08),transparent_70%),linear-gradient(160deg,rgba(15,15,20,0.9),rgba(5,5,10,0.9))]"
-                  )}
-                >
-                  <p className="text-[0.69rem] uppercase tracking-[0.14em] text-[var(--text-dim)]">
-                    {card.label}
-                  </p>
-                  <p className={cn("mt-2 font-display text-4xl", accentMap[card.accent])}>{card.value}</p>
-                  <p className="mt-2 text-sm text-[var(--text-muted)]">{card.note}</p>
-                </article>
-              </Floating>
-            );
-          })}
-        </Reveal>
+                {/* Window Top Navigation Bar */}
+                <div className="flex items-center justify-between border-b border-[var(--border-color)] bg-[var(--surface-800)]/80 px-4 py-3">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2.5 w-2.5 rounded-full bg-[var(--text-100)]/10" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-[var(--text-100)]/10" />
+                    <span className="h-2.5 w-2.5 rounded-full bg-[var(--text-100)]/10" />
+                    <span className="ml-2 font-mono text-[0.62rem] text-[var(--text-muted)] select-none">pipeline.tenetlabs.dev</span>
+                  </div>
+                  <div className="flex gap-1">
+                    {(["dev", "audit", "deploy"] as const).map((tab) => (
+                      <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        className={cn(
+                          "font-mono text-[0.65rem] px-2.5 py-1 transition-all duration-200 cursor-pointer border",
+                          activeTab === tab
+                            ? "bg-[var(--text-100)]/10 border-[var(--border-color)] text-[var(--text-100)] font-semibold"
+                            : "bg-transparent border-transparent text-[var(--text-muted)] hover:text-[var(--text-soft)]"
+                        )}
+                      >
+                        {tabContent[tab].title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Dashboard Workspace */}
+                <div className="grid md:grid-cols-[1.1fr_0.9fr] divide-y md:divide-y-0 md:divide-x divide-[var(--border-color)] bg-[var(--bg-950)]/95">
+                  {/* Build Status Details */}
+                  <div className="p-6 flex flex-col justify-between space-y-6">
+                    <div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[0.62rem] font-black uppercase tracking-wider text-[var(--text-muted)]">Active Project Phase</span>
+                        <Badge className="border-green-500/20 bg-green-500/5 text-green-400 font-mono text-[0.6rem] font-bold tracking-wider px-2 py-0.5 animate-pulse">
+                          Live
+                        </Badge>
+                      </div>
+                      <h4 className="mt-2 text-md font-bold text-[var(--text-100)] text-left">{tabContent[activeTab].phase}</h4>
+                    </div>
+
+                    {/* Progress Indicators */}
+                    <div className="space-y-4 text-left">
+                      <div className="space-y-1.5">
+                        <div className="flex justify-between text-[0.65rem]">
+                          <span className="text-[var(--text-soft)]/65 font-medium">Build Completeness</span>
+                          <span className="font-bold text-[var(--accent-primary)]">{tabContent[activeTab].progress}%</span>
+                        </div>
+                        <div className="h-1.5 w-full bg-[var(--text-100)]/[0.04] border border-[var(--border-color)] relative overflow-hidden">
+                          <m.div
+                            className="h-full bg-[var(--text-100)]/70 relative"
+                            initial={{ width: "0%" }}
+                            animate={{ width: `${tabContent[activeTab].progress}%` }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                          >
+                            {tabContent[activeTab].progress < 100 && (
+                              <span className="absolute inset-0 bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.4),transparent)] animate-[shimmer_1.5s_infinite] bg-[length:100px_100%]" />
+                            )}
+                          </m.div>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2 text-[0.65rem] pt-2">
+                        <div className="border border-[var(--border-color)] bg-[var(--bg-900)]/40 p-3 text-left">
+                          <span className="block text-[0.55rem] font-bold uppercase tracking-wider text-[var(--text-dim)] mb-1">Architecture</span>
+                          <span className="text-[var(--text-100)] font-semibold">Next.js Edge</span>
+                        </div>
+                        <div className="border border-[var(--border-color)] bg-[var(--bg-900)]/40 p-3 text-left">
+                          <span className="block text-[0.55rem] font-bold uppercase tracking-wider text-[var(--text-dim)] mb-1">AI Pipeline</span>
+                          <span className="text-[var(--text-100)] font-semibold">LLM Router</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Live Logger Console */}
+                  <div className="p-6 bg-[var(--surface-800)]/30 flex flex-col justify-between font-mono text-[0.65rem] text-left">
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between border-b border-[var(--border-color)] pb-2 mb-3">
+                        <span className="text-[0.62rem] font-bold uppercase tracking-wider text-[var(--text-muted)]">Terminal Stream</span>
+                        <span className="text-[0.6rem] text-[var(--text-dim)]/50 select-none">ESC to Clear</span>
+                      </div>
+                      <div className="space-y-1.5 min-h-[140px] text-[var(--text-soft)]/90">
+                        <AnimatePresence mode="popLayout">
+                          {tabContent[activeTab].logs.map((log, i) => (
+                            <m.div
+                              key={log}
+                              initial={{ opacity: 0, x: -6 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.2, delay: i * 0.05 }}
+                              className={cn(
+                                "leading-relaxed",
+                                log.startsWith("✔") && "text-green-400 font-semibold"
+                              )}
+                            >
+                              {log}
+                            </m.div>
+                          ))}
+                        </AnimatePresence>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Dashboard Bottom Metric Bar */}
+                <div className="grid grid-cols-3 divide-x divide-[var(--border-color)] border-t border-[var(--border-color)] bg-[var(--bg-900)] py-4 text-center">
+                  {siteContent.hero.visual.miniCards.map((card) => (
+                    <div key={card.label} className="px-2">
+                      <p className="text-[0.55rem] uppercase tracking-[0.16em] text-[var(--text-muted)]">
+                        {card.label}
+                      </p>
+                      <p className="mt-1 text-lg sm:text-xl font-bold text-[var(--text-100)]">
+                        <MetricCountUp value={card.value} />
+                      </p>
+                      <p className="text-[0.6rem] text-[var(--text-dim)] mt-0.5 hidden sm:block">
+                        {card.note}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </MouseGlow>
+            </Reveal>
+          </div>
+        </div>
       </div>
     </section>
   );

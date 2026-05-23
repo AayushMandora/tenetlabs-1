@@ -8,7 +8,6 @@ import { HeroSection } from "@/components/sections/hero";
 import { PortfolioSection } from "@/components/sections/portfolio";
 import { PricingSection } from "@/components/sections/pricing";
 import { ProcessSection } from "@/components/sections/process";
-import { ServicesSection } from "@/components/sections/services";
 import { SocialProofSection } from "@/components/sections/social-proof";
 import { TechStackSection } from "@/components/sections/tech-stack";
 import { TestimonialsSection } from "@/components/sections/testimonials";
@@ -20,30 +19,49 @@ export default function HomePage() {
       {/* Restored rich animated background with monochrome gradient */}
       <div
         aria-hidden
-        className="fixed inset-0 -z-20 bg-[radial-gradient(900px_560px_at_8%_0%,rgba(255,255,255,0.08),transparent_70%),radial-gradient(860px_600px_at_95%_8%,rgba(180,180,180,0.06),transparent_72%),radial-gradient(680px_360px_at_34%_66%,rgba(255,255,255,0.04),transparent_75%),linear-gradient(170deg,var(--bg-950),var(--bg-900))]"
+        className="fixed inset-0 -z-20"
+        style={{
+          background: `radial-gradient(900px 560px at 8% 0%, var(--glow-1), transparent 70%),
+                       radial-gradient(860px 600px at 95% 8%, var(--glow-2), transparent 72%),
+                       radial-gradient(680px 360px at 34% 66%, var(--glow-3), transparent 75%),
+                       linear-gradient(170deg, var(--bg-950), var(--bg-900))`
+        }}
       />
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[length:48px_48px] opacity-[0.3]"
+        className="pointer-events-none fixed inset-0 -z-10 bg-[length:48px_48px] opacity-[0.4]"
+        style={{
+          backgroundImage: `linear-gradient(var(--grid-color) 1px, transparent 1px),
+                            linear-gradient(90deg, var(--grid-color) 1px, transparent 1px)`
+        }}
       />
       <div
         aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(rgba(255,255,255,0.88)_0.5px,transparent_0.7px)] bg-[length:3px_3px] opacity-[0.08]"
+        className="pointer-events-none fixed inset-0 -z-10 bg-[length:3px_3px] opacity-[0.08]"
+        style={{
+          backgroundImage: `radial-gradient(var(--dots-color) 0.5px, transparent 0.7px)`
+        }}
       />
       <CursorGlow />
 
       {/* Full-width sharp wrapper — no rounding, flush to viewport edges, solid background to separate from outer starfield */}
-      <div className="relative z-20 mx-auto max-w-[1400px] border-x border-white/[0.08] bg-[#060608]">
-        <div className="relative border-b border-white/[0.06] bg-[rgba(7,7,9,0.98)]">
-          <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_500px_at_0%_0%,rgba(255,255,255,0.04),transparent_70%),radial-gradient(700px_400px_at_100%_0%,rgba(180,180,180,0.04),transparent_70%)]" />
+      <div className="relative z-20 mx-auto max-w-[1400px] border-x border-[var(--border-color)] bg-[var(--bg-950)]">
+        <div className="relative border-b border-[var(--border-color)] bg-[var(--header-bg)]">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-[0.8]"
+            style={{
+              backgroundImage: `radial-gradient(900px 500px at 0% 0%, var(--glow-1), transparent 70%),
+                                radial-gradient(700px 400px at 100% 0%, var(--glow-2), transparent 70%)`
+            }}
+          />
           <HeaderSection />
         </div>
 
         {/* Sections stacked with dividers — no vertical gaps between them */}
-        <div className="divide-y divide-white/[0.06]">
+        <div className="divide-y divide-[var(--border-color)]">
           <Section><HeroSection /></Section>
           <Section tight><SocialProofSection /></Section>
-          <Section><ServicesSection /></Section>
           <Section><ProcessSection /></Section>
           <Section><TechStackSection /></Section>
           <Section><PortfolioSection /></Section>

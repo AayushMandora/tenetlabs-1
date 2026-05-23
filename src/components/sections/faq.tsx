@@ -30,14 +30,14 @@ export function FaqSection() {
               <h3>
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between px-5 py-4 text-left text-sm font-semibold text-[var(--text-100)] transition hover:bg-white/[0.02] sm:text-base"
+                  className="flex w-full items-center justify-between px-5 py-4 text-left text-sm font-semibold text-[var(--text-100)] transition hover:bg-[var(--text-100)]/[0.02] sm:text-base"
                   aria-expanded={isOpen}
                   aria-controls={contentId}
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                 >
                   {item.question}
                   <span
-                    className="ml-4 inline-flex h-6 w-6 items-center justify-center rounded-none border border-white/20 bg-white/[0.05] text-[var(--accent-primary)]"
+                    className="ml-4 inline-flex h-6 w-6 items-center justify-center rounded-none border border-[var(--panel-border)] bg-[var(--text-100)]/[0.05] text-[var(--accent-primary)]"
                     aria-hidden
                   >
                     {isOpen ? "-" : "+"}
