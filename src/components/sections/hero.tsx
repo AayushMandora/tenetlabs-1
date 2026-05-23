@@ -205,14 +205,31 @@ export function HeroSection() {
                         </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-2 text-[0.65rem] pt-2">
-                        <div className="border border-[var(--border-color)] bg-[var(--bg-900)]/40 p-3 text-left">
-                          <span className="block text-[0.55rem] font-bold uppercase tracking-wider text-[var(--text-dim)] mb-1">Architecture</span>
-                          <span className="text-[var(--text-100)] font-semibold">Next.js Edge</span>
+                      <div className="relative h-20 w-full flex items-center justify-between border border-[var(--border-color)] bg-[var(--bg-900)]/40 p-4 overflow-hidden rounded-none">
+                        <div className="absolute inset-0 bg-[radial-gradient(140px_circle_at_center,var(--glow-1),transparent)] opacity-40" />
+                        
+                        <div className="flex flex-col justify-center text-left z-10">
+                          <span className="block text-[0.55rem] font-bold uppercase tracking-[0.16em] text-[var(--text-dim)] mb-0.5">Neural Pipeline</span>
+                          <span className="text-[var(--text-100)] font-mono text-[0.65rem] font-semibold">Voice & LLM Stream Active</span>
                         </div>
-                        <div className="border border-[var(--border-color)] bg-[var(--bg-900)]/40 p-3 text-left">
-                          <span className="block text-[0.55rem] font-bold uppercase tracking-wider text-[var(--text-dim)] mb-1">AI Pipeline</span>
-                          <span className="text-[var(--text-100)] font-semibold">LLM Router</span>
+
+                        {/* Interactive Wave Columns */}
+                        <div className="flex items-center gap-1 z-10 h-8 pr-2">
+                          {[1.1, 2.2, 1.4, 2.7, 1.8, 2.5, 1.3, 2.1, 1.5, 2.6].map((delay, i) => (
+                            <m.span
+                              key={i}
+                              className="w-1 bg-gradient-to-t from-[var(--accent-primary)] to-[var(--accent-secondary)] rounded-none"
+                              animate={{
+                                height: [4, 26, 4],
+                              }}
+                              transition={{
+                                duration: 0.9,
+                                repeat: Infinity,
+                                delay: delay * 0.2,
+                                ease: "easeInOut",
+                              }}
+                            />
+                          ))}
                         </div>
                       </div>
                     </div>

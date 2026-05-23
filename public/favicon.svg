@@ -1,20 +1,11 @@
 <svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Dark Boxy Background -->
-  <rect width="512" height="512" fill="#060608" />
-  
-  <!-- F -->
-  <rect x="76" y="156" width="30" height="200" fill="#e5e7eb" />
-  <rect x="106" y="156" width="50" height="30" fill="#e5e7eb" />
-  <rect x="106" y="246" width="40" height="30" fill="#e5e7eb" />
-  
-  <!-- A -->
-  <path d="M176 356V156H246V356H216V276H196V356H176ZM196 186H226V246H196V186Z" fill="#e5e7eb" />
-  
-  <!-- F -->
-  <rect x="266" y="156" width="30" height="200" fill="#e5e7eb" />
-  <rect x="296" y="156" width="50" height="30" fill="#e5e7eb" />
-  <rect x="296" y="246" width="40" height="30" fill="#e5e7eb" />
-  
-  <!-- 0 -->
-  <path d="M366 156H436V356H366V156ZM396 186V326H406V186H396Z" fill="#e5e7eb" />
+  <defs>
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff5511" />
+      <stop offset="100%" stop-color="#5856d6" />
+    </linearGradient>
+  </defs>
+  <rect x="32" y="32" width="448" height="448" rx="120" fill="url(#logo-grad)" />
+  <path d="M120 140 H392 V210 H290 V380 H222 V210 H120 Z" fill="#faf9f5" />
+  <path d="M222 210 L256 244 L290 210 V380 H222 Z" fill="#1b1713" opacity="0.12" />
 </svg>

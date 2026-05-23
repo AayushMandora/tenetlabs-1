@@ -137,7 +137,7 @@ export function ProcessSection() {
                       </ul>
                     </div>
 
-                    <div className="relative z-10 mt-8 rounded-none border border-[var(--border-color)] bg-[var(--bg-900)]/40 p-4 backdrop-blur-sm">
+                    <div className="relative z-10 mt-auto pt-6 rounded-none border border-[var(--border-color)] bg-[var(--bg-900)]/40 p-4 backdrop-blur-sm">
                       <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--accent-primary)]">
                         Deliverable
                       </p>

@@ -28,6 +28,21 @@ export function MouseGlow({
     const y = e.clientY - rect.top;
     containerRef.current.style.setProperty("--mouse-x", `${x}px`);
     containerRef.current.style.setProperty("--mouse-y", `${y}px`);
+
+    // 3D Perspective Card Tilt calculations
+    const width = rect.width;
+    const height = rect.height;
+    const rotateY = ((x - width / 2) / (width / 2)) * 6; // range -6deg to 6deg
+    const rotateX = -((y - height / 2) / (height / 2)) * 6; // range -6deg to 6deg
+    containerRef.current.style.setProperty("--tilt-x", `${rotateX}deg`);
+    containerRef.current.style.setProperty("--tilt-y", `${rotateY}deg`);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    if (!containerRef.current) return;
+    containerRef.current.style.setProperty("--tilt-x", "0deg");
+    containerRef.current.style.setProperty("--tilt-y", "0deg");
   };
 
   return (
@@ -35,11 +50,14 @@ export function MouseGlow({
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={handleMouseLeave}
       className={cn(
-        "group/glow relative overflow-hidden border border-[var(--panel-border)] bg-[var(--panel-bg)] transition-all duration-300 ease-out hover:border-[var(--panel-hover-border)] hover:bg-[var(--panel-hover-bg)]",
+        "group/glow relative overflow-hidden border border-[var(--panel-border)] bg-[var(--panel-bg)] [transition:transform_0.25s_ease-out,border-color_0.3s_ease,background-color_0.3s_ease] will-change-transform hover:z-30",
         className
       )}
+      style={{
+        transform: "perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(0)"
+      }}
       {...props}
     >
       {/* Card Content wrapper */}
