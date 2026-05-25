@@ -3,6 +3,7 @@ import { siteContent } from "@/content/site-content";
 import { Reveal } from "@/components/motion/reveal";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { SectionHeading } from "@/components/shared/section-heading";
+import { MouseGlow } from "@/components/motion/mouse-glow";
 import { cn } from "@/lib/cn";
 import { panelBase, panelHover } from "@/lib/ui-classes";
 
@@ -41,13 +42,20 @@ export function TestimonialsSection() {
       <Stagger className="grid gap-4 lg:grid-cols-3">
         {siteContent.testimonials.items.map((testimonial) => (
           <StaggerItem key={testimonial.name} className="h-full">
-            <article className={cn("group relative flex h-full flex-col overflow-hidden rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)] p-7 transition-colors hover:border-[var(--panel-hover-border)]")}>
+            <MouseGlow
+              className="h-full rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)]"
+              containerClassName="group relative flex h-full flex-col p-7 overflow-hidden"
+              glowColor="var(--glow-color)"
+            >
               {/* Top accent bar */}
               <div className="absolute top-0 left-0 h-[2px] w-full bg-[var(--text-100)]/60 opacity-75" />
 
-              <div className="flex flex-1 flex-col justify-between">
+              <div className="flex flex-1 flex-col justify-between [transform-style:preserve-3d]">
                 {/* Stars and big quote */}
-                <div>
+                <div 
+                  className="transition-transform duration-500 [transform-style:preserve-3d]"
+                  style={{ transform: "translateZ(35px)" }}
+                >
                   <Stars />
                   <blockquote className="relative mt-5">
                     <span
@@ -63,7 +71,10 @@ export function TestimonialsSection() {
                 </div>
 
                 {/* Bottom author and badge row */}
-                <div>
+                <div 
+                  className="transition-transform duration-500 [transform-style:preserve-3d]"
+                  style={{ transform: "translateZ(20px)" }}
+                >
                   {/* Author row */}
                   <div className="mt-8 flex flex-col gap-6 border-t border-[var(--border-color)] pt-6">
                     <div className="flex items-center gap-4">
@@ -81,7 +92,7 @@ export function TestimonialsSection() {
                   </div>
                 </div>
               </div>
-            </article>
+            </MouseGlow>
           </StaggerItem>
         ))}
       </Stagger>

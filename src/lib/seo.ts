@@ -10,9 +10,9 @@ export const seoMetadata: Metadata = {
   description:
     "Custom web platforms and AI product engineering that helps founders ship market-ready MVPs in 28 days.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: "/favicon.png?v=rounded1",
+    shortcut: "/favicon.png?v=rounded1",
+    apple: "/favicon.png?v=rounded1",
   },
   openGraph: {
     title: `${siteContent.config.agencyName} | MVPs in 28 Days`,

@@ -91,7 +91,7 @@ export function CustomCursor() {
 
             {/* Outer Halo/Ring */}
             <motion.div
-                className="pointer-events-none fixed top-0 left-0 z-[100] hidden rounded-full lg:block"
+                className="pointer-events-none fixed top-0 left-0 z-[100] hidden rounded-none lg:block"
                 variants={ringVariants}
                 animate={isHovering ? "hover" : "default"}
                 transition={{
@@ -104,7 +104,7 @@ export function CustomCursor() {
 
             {/* Inner Dot */}
             <motion.div
-                className="pointer-events-none fixed top-0 left-0 z-[100] hidden h-1.5 w-1.5 rounded-full bg-white lg:block"
+                className="pointer-events-none fixed top-0 left-0 z-[100] hidden h-1.5 w-1.5 rounded-none bg-white lg:block"
                 variants={dotVariants}
                 animate={isHovering ? "hover" : "default"}
                 transition={{

@@ -1,5 +1,5 @@
 import type React from "react";
-import { CursorGlow } from "@/components/motion/floating";
+import { AsciiBackground } from "@/components/motion/ascii-background";
 import { CtaSection } from "@/components/sections/cta";
 import { FaqSection } from "@/components/sections/faq";
 import { FooterSection } from "@/components/sections/footer";
@@ -16,37 +16,14 @@ import { WhyUsSection } from "@/components/sections/why-us";
 export default function HomePage() {
   return (
     <div className="relative isolate min-h-screen overflow-x-clip">
-      {/* Restored rich animated background with monochrome gradient */}
-      <div
-        aria-hidden
-        className="fixed inset-0 -z-20"
-        style={{
-          background: `radial-gradient(900px 560px at 8% 0%, var(--glow-1), transparent 70%),
-                       radial-gradient(860px 600px at 95% 8%, var(--glow-2), transparent 72%),
-                       radial-gradient(680px 360px at 34% 66%, var(--glow-3), transparent 75%),
-                       linear-gradient(170deg, var(--bg-950), var(--bg-900))`
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-[length:48px_48px] opacity-[0.4]"
-        style={{
-          backgroundImage: `linear-gradient(var(--grid-color) 1px, transparent 1px),
-                            linear-gradient(90deg, var(--grid-color) 1px, transparent 1px)`
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-0 -z-10 bg-[length:3px_3px] opacity-[0.08]"
-        style={{
-          backgroundImage: `radial-gradient(var(--dots-color) 0.5px, transparent 0.7px)`
-        }}
-      />
-      <CursorGlow />
-
-      {/* Full-width sharp wrapper — no rounding, flush to viewport edges, solid background to separate from outer starfield */}
-      <div className="relative z-20 mx-auto max-w-[1400px] border-x border-[var(--border-color)] bg-[var(--bg-950)]">
-        <div className="relative border-b border-[var(--border-color)] bg-[var(--header-bg)]">
+      {/* ── Main content container ────────────────────────────────────── */}
+      <div className="relative z-20 mx-auto max-w-[1400px] border-x border-[var(--border-color)] bg-[var(--bg-950)]/80 backdrop-blur-sm overflow-hidden">
+        {/* ── Background layer ──────────────────────────────────────────────
+            Includes: radial glows, grid, dots, cursor glow, parallax ASCII art
+            All confined to the background (z-0), behind the main content.
+            Moved inside the container to remain crisp (not blurred by container's backdrop-blur). */}
+        <AsciiBackground />
+        <div className="relative z-10 border-b border-[var(--border-color)] bg-[var(--header-bg)]">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0 opacity-[0.8]"
@@ -58,8 +35,8 @@ export default function HomePage() {
           <HeaderSection />
         </div>
 
-        {/* Sections stacked with dividers — no vertical gaps between them */}
-        <div className="divide-y divide-[var(--border-color)]">
+        {/* Sections stacked with dividers */}
+        <div className="relative z-10 divide-y divide-[var(--border-color)]">
           <Section><HeroSection /></Section>
           <Section tight><SocialProofSection /></Section>
           <Section><ProcessSection /></Section>

@@ -60,7 +60,7 @@ export function ProcessSection() {
               <div
                 key={dotNum}
                 className={cn(
-                  "absolute top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full border bg-[var(--bg-950)] transition-all duration-300 z-10",
+                  "absolute top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-none border bg-[var(--bg-950)] transition-all duration-300 z-10",
                   isLit
                     ? "border-[var(--accent-primary)] bg-[var(--text-100)] shadow-[0_0_10px_var(--accent-primary)] scale-110"
                     : "border-[var(--panel-border)]"
@@ -86,10 +86,7 @@ export function ProcessSection() {
                   onMouseLeave={() => setHoveredStep(null)}
                 >
                   <MouseGlow
-                    className={cn(
-                      "h-full rounded-none border transition-colors duration-300 bg-[var(--panel-bg)]",
-                      isHovered ? "border-[var(--panel-hover-border)]" : "border-[var(--panel-border)]"
-                    )}
+                    className="h-full"
                     containerClassName="relative h-full flex flex-col p-6 sm:p-8 overflow-hidden"
                     glowColor="var(--glow-color)"
                   >
@@ -137,7 +134,7 @@ export function ProcessSection() {
                       </ul>
                     </div>
 
-                    <div className="relative z-10 mt-auto pt-6 rounded-none border border-[var(--border-color)] bg-[var(--bg-900)]/40 p-4 backdrop-blur-sm">
+                    <div className="relative z-10 mt-auto pt-6 rounded-xl border border-[var(--border-color)] bg-[var(--bg-900)]/40 p-4 backdrop-blur-sm">
                       <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--accent-primary)]">
                         Deliverable
                       </p>

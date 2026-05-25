@@ -6,6 +6,7 @@ import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { MouseGlow } from "@/components/motion/mouse-glow";
 import { cn } from "@/lib/cn";
+import { CornerGuides } from "@/components/shared/corner-guides";
 
 const accentMap: Record<string, string> = {
   bright: "text-[var(--accent-primary)] border-[var(--panel-border)] bg-[var(--text-100)]/[0.02] shadow-[inset_0_0_12px_var(--glow-1)]",
@@ -87,13 +88,17 @@ export function ServicesSection() {
           return (
             <StaggerItem key={service.title} className="h-full">
               <MouseGlow
-                className="h-full rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)] transition-all duration-300 hover:border-[var(--panel-hover-border)] hover:bg-[var(--panel-hover-bg)] hover:-translate-y-1"
-                containerClassName="h-full flex flex-col justify-between p-6 sm:p-8"
+                className="h-full transition-all duration-300 hover:-translate-y-1"
+                containerClassName="h-full flex flex-col justify-between p-6 sm:p-8 relative"
               >
-                <div>
+                <CornerGuides label={`srv_${service.icon}`} />
+                <div 
+                  className="transition-transform duration-500 [transform-style:preserve-3d]"
+                  style={{ transform: "translateZ(35px)" }}
+                >
                   <span
                     className={cn(
-                      "mb-6 inline-flex h-11 w-11 items-center justify-center rounded-none border",
+                       "mb-6 inline-flex h-11 w-11 items-center justify-center rounded-xl border",
                       accentMap[tone]
                     )}
                   >
@@ -117,7 +122,8 @@ export function ServicesSection() {
 
                 <a
                   href={service.ctaHref}
-                  className="mt-auto inline-flex items-center text-sm font-semibold text-[var(--accent-primary)] transition hover:brightness-125"
+                  className="mt-auto inline-flex items-center text-sm font-semibold text-[var(--accent-primary)] transition hover:brightness-125 [transform-style:preserve-3d]"
+                  style={{ transform: "translateZ(15px)" }}
                 >
                   {service.ctaLabel}
                   <svg

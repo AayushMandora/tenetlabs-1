@@ -1,9 +1,7 @@
 "use client";
 
 import { useEffect, useSyncExternalStore, type ReactNode } from "react";
-
 import { m, useMotionValue, useSpring } from "framer-motion";
-
 import { cn } from "@/lib/cn";
 import { useHydratedReducedMotion } from "@/components/motion/use-hydrated-reduced-motion";
 
@@ -75,8 +73,8 @@ export function CursorGlow() {
     if (shouldReduceMotion || !hasFinePointer) return;
 
     const onMove = (event: MouseEvent) => {
-      x.set(event.clientX - 160);
-      y.set(event.clientY - 160);
+      x.set(event.clientX - 192);
+      y.set(event.clientY - 192);
     };
 
     window.addEventListener("mousemove", onMove, { passive: true });
@@ -93,7 +91,7 @@ export function CursorGlow() {
   return (
     <m.div
       aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-10 hidden h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.16),rgba(255,255,255,0.03),transparent_72%)] blur-xl lg:block"
+      className="pointer-events-none fixed left-0 top-0 z-30 hidden h-96 w-96 rounded-none bg-[radial-gradient(circle,var(--cursor-glow),transparent_70%)] blur-2xl lg:block"
       style={{ x: springX, y: springY }}
     />
   );

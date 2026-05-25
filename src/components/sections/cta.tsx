@@ -123,7 +123,7 @@ export function CtaSection() {
                         <span className="text-[0.65rem] font-bold text-[var(--text-muted)] uppercase tracking-wider">
                           Consultation Slot Preview
                         </span>
-                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--text-100)]/20" />
+                        <span className="h-1.5 w-1.5 rounded-none bg-[var(--text-100)]/20" />
                       </div>
                       <div className="flex gap-2">
                         {[1, 2, 3].map((i) => (
@@ -150,7 +150,7 @@ export function CtaSection() {
                         {/* Header */}
                         <div className="flex justify-between items-center pb-2.5 border-b border-[var(--border-color)] mb-4">
                           <span className="text-[0.65rem] font-bold text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5">
-                            <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
+                            <span className="h-1.5 w-1.5 rounded-none bg-green-500 animate-pulse" />
                             Live Availability
                           </span>
                           <span className="text-[0.55rem] font-bold text-[var(--accent-primary)] uppercase tracking-wider">
@@ -237,7 +237,7 @@ export function CtaSection() {
                       className="flex flex-col items-center justify-between text-center py-2 h-full min-h-[230px]"
                     >
                       <div className="flex flex-col items-center">
-                        <div className="h-10 w-10 rounded-full border border-green-500/20 bg-green-500/10 flex items-center justify-center text-green-400 mb-4 animate-bounce">
+                        <div className="h-10 w-10 rounded-none border border-green-500/20 bg-green-500/10 flex items-center justify-center text-green-400 mb-4 animate-bounce">
                           <Check className="h-5 w-5" />
                         </div>
                         <h4 className="text-xs font-black uppercase tracking-wider text-[var(--text-100)]">

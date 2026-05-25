@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Sans, Syne } from "next/font/google";
+import { Instrument_Sans, Syne, Cormorant_Garamond } from "next/font/google";
 
 import { MotionProvider } from "@/components/motion/stagger";
 import { seoMetadata } from "@/lib/seo";
@@ -18,6 +18,14 @@ const syne = Syne({
   display: "swap",
 });
 
+const cormorantGaramond = Cormorant_Garamond({
+  variable: "--font-serif",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
 export const metadata: Metadata = seoMetadata;
 
 export const viewport: Viewport = {
@@ -30,7 +38,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${instrumentSans.variable} ${syne.variable} bg-[var(--bg-950)] font-sans text-[var(--text-100)] antialiased`}
+        className={`${instrumentSans.variable} ${syne.variable} ${cormorantGaramond.variable} bg-[var(--bg-950)] font-sans text-[var(--text-100)] antialiased`}
       >
         <MotionProvider>{children}</MotionProvider>
       </body>

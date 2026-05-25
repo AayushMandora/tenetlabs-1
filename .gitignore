@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local assets / scratch files
+screenshot.png
+logo-base64.txt

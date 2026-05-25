@@ -8,6 +8,7 @@ import { siteContent } from "@/content/site-content";
 import { Reveal } from "@/components/motion/reveal";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { SectionHeading } from "@/components/shared/section-heading";
+import { CornerGuides } from "@/components/shared/corner-guides";
 
 const techDescriptions: Record<string, string> = {
   React: "Declarative UI component development for complex frontend structures.",
@@ -116,7 +117,8 @@ export function TechStackSection() {
         />
       </Reveal>
 
-      <div className="space-y-6">
+      <div className="relative border border-[var(--border-color)] bg-[var(--surface-800)]/5 p-6 sm:p-8 overflow-hidden space-y-6 rounded-2xl">
+        <CornerGuides label="tech_spec_03" />
         <Stagger className="grid grid-cols-2 gap-x-2 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {allTechItems.map((item) => {
             return (

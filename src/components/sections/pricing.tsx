@@ -3,7 +3,9 @@ import { siteContent } from "@/content/site-content";
 import { Reveal } from "@/components/motion/reveal";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { SectionHeading } from "@/components/shared/section-heading";
+import { MouseGlow } from "@/components/motion/mouse-glow";
 import { cn } from "@/lib/cn";
+import { CornerGuides } from "@/components/shared/corner-guides";
 
 function PlanIcon({ name }: { name: string }) {
   if (name.toLowerCase().includes("mvp")) {
@@ -45,14 +47,20 @@ export function PricingSection() {
         {siteContent.pricing.plans.map((plan) => {
           return (
             <StaggerItem key={plan.name}>
-              <article
+              <MouseGlow
                 className={cn(
-                  "relative flex h-full flex-col overflow-hidden rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)] p-8",
-                  plan.featured && "border-[var(--panel-hover-border)] shadow-[0_0_40px_var(--glow-1)] bg-[var(--panel-hover-bg)]"
+                  "relative flex h-full flex-col",
+                  plan.featured && "shadow-[0_0_40px_var(--glow-1)]"
                 )}
+                containerClassName="p-8 flex flex-col h-full justify-between relative"
+                glowColor="var(--glow-color)"
               >
+                <CornerGuides label={`price_${plan.name.split(" ")[0].toLowerCase()}`} />
                 {/* Top visual banner */}
-                <div className="relative flex flex-col items-start gap-4 mb-8">
+                <div 
+                  className="relative flex flex-col items-start gap-4 mb-8 transition-transform duration-500 [transform-style:preserve-3d]"
+                  style={{ transform: "translateZ(35px)" }}
+                >
                   <div className="flex w-full items-start justify-between">
                     <div className="flex flex-col gap-3">
                       {plan.featured && (
@@ -60,7 +68,7 @@ export function PricingSection() {
                           Popular
                         </span>
                       )}
-                      <div className="flex h-10 w-10 items-center justify-center rounded-none bg-[var(--text-100)]/[0.08] text-[var(--accent-primary)]">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--text-100)]/[0.08] text-[var(--accent-primary)]">
                         <PlanIcon name={plan.name} />
                       </div>
                     </div>
@@ -96,7 +104,10 @@ export function PricingSection() {
                 </div>
 
                 {/* Features */}
-                <div className="flex flex-1 flex-col justify-between border-t border-[var(--border-color)] pt-8">
+                <div 
+                  className="flex flex-1 flex-col justify-between border-t border-[var(--border-color)] pt-8 transition-transform duration-500 [transform-style:preserve-3d]"
+                  style={{ transform: "translateZ(20px)" }}
+                >
                   <ul className="grid grid-cols-1 gap-3.5">
                     {plan.includes.map((item) => (
                       <li key={item} className="flex items-center gap-3">
@@ -122,7 +133,7 @@ export function PricingSection() {
                     </a>
                   </div>
                 </div>
-              </article>
+              </MouseGlow>
             </StaggerItem>
           );
         })}
@@ -134,7 +145,7 @@ export function PricingSection() {
           return (
             <div
               key={addon}
-              className="flex items-center gap-2 rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)] px-4 py-2.5 transition-colors hover:border-[var(--panel-hover-border)]"
+              className="flex items-center gap-2 rounded-xl border border-[var(--panel-border)] bg-[var(--panel-bg)] px-4 py-2.5 transition-colors hover:border-[var(--panel-hover-border)]"
             >
               <span className="text-[var(--accent-primary)] font-bold text-lg leading-none">+</span>
               <span className="text-[0.85rem] font-semibold text-[var(--text-100)]">{split[0]}</span>
