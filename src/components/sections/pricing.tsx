@@ -43,7 +43,7 @@ export function PricingSection() {
         />
       </Reveal>
 
-      <Stagger className="grid gap-5 lg:grid-cols-3">
+      <Stagger className="grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
         {siteContent.pricing.plans.map((plan) => {
           return (
             <StaggerItem key={plan.name}>
@@ -52,7 +52,7 @@ export function PricingSection() {
                   "relative flex h-full flex-col",
                   plan.featured && "shadow-[0_0_40px_var(--glow-1)]"
                 )}
-                containerClassName="p-8 flex flex-col h-full justify-between relative"
+                containerClassName="p-5 sm:p-6 lg:p-8 flex flex-col h-full justify-between relative"
                 glowColor="var(--glow-color)"
               >
                 <CornerGuides label={`price_${plan.name.split(" ")[0].toLowerCase()}`} />

@@ -89,7 +89,7 @@ html[data-theme="light"] {
 }
 
 @layer base {
-  *:not(.rounded-full) {
+  *:not(.rounded-full):not(.rounded-card):not(.rounded-card *) {
     border-color: var(--border-color);
     border-radius: 0 !important;
   }
@@ -117,6 +117,8 @@ html[data-theme="light"] {
   html,
   body {
     min-height: 100%;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   body {

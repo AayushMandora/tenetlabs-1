@@ -24,7 +24,7 @@ const SocialIconMap: Record<string, React.ElementType> = {
 export function FooterSection() {
   return (
     <footer className="pt-6">
-      <div className="grid gap-4 rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)] p-6 sm:p-8 lg:grid-cols-[1.2fr_repeat(4,1fr)]">
+      <div className="grid gap-4 rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)] p-4 sm:p-6 md:p-8 sm:grid-cols-2 lg:grid-cols-[1.2fr_repeat(4,1fr)]">
         <article className="space-y-4">
           <a href="#top" className="inline-flex items-center gap-3">
             <img src="/logo.png" alt="TenetLabs Logo" className="h-6 w-6 object-cover rounded-full" />

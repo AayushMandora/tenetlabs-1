@@ -14,7 +14,7 @@ export function PortfolioSection() {
         <SectionHeading eyebrow="Case Studies" title={siteContent.caseStudies.heading} />
       </Reveal>
 
-      <Stagger className="grid gap-4 lg:grid-cols-3">
+      <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {siteContent.caseStudies.items.map((project, index) => {
           const isCard1 = index === 0;
           const isCard2 = index === 1;
@@ -24,9 +24,9 @@ export function PortfolioSection() {
             <StaggerItem
               key={project.name}
               className={cn(
-                isCard1 && "lg:col-span-2",
-                isCard2 && "lg:col-span-1",
-                isCard3 && "lg:col-span-3"
+                isCard1 && "md:col-span-2 lg:col-span-2",
+                isCard2 && "md:col-span-1 lg:col-span-1",
+                isCard3 && "md:col-span-2 lg:col-span-3"
               )}
             >
               <MouseGlow className="h-full" containerClassName="h-full flex flex-col justify-between relative">
@@ -44,7 +44,7 @@ export function PortfolioSection() {
                       <div className="mb-5 inline-flex w-fit items-center rounded-none border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-[var(--accent-primary)]">
                         E-commerce MVP
                       </div>
-                      <h3 className="font-display text-[1.65rem] leading-tight text-[var(--text-100)]">{project.name}</h3>
+                      <h3 className="font-display text-xl sm:text-[1.65rem] leading-tight text-[var(--text-100)]">{project.name}</h3>
                       <p className="mt-3 text-[0.95rem] font-medium text-[var(--accent-secondary)]">{project.tagline}</p>
 
                       <div className="mt-6 space-y-4 rounded-xl border border-[var(--border-color)] bg-[var(--text-100)]/[0.02] p-4 backdrop-blur-md">
@@ -119,7 +119,7 @@ export function PortfolioSection() {
                         <div className="mb-5 inline-flex w-fit items-center rounded-none border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-[var(--accent-primary)]">
                           SaaS Admin
                         </div>
-                        <h3 className="font-display text-[1.65rem] leading-tight text-[var(--text-100)]">{project.name}</h3>
+                        <h3 className="font-display text-xl sm:text-[1.65rem] leading-tight text-[var(--text-100)]">{project.name}</h3>
                         <p className="mt-3 text-[0.95rem] font-medium text-[var(--accent-secondary)]">{project.tagline}</p>
                       </div>
 
@@ -176,7 +176,7 @@ export function PortfolioSection() {
                       <div className="mb-5 inline-flex w-fit items-center rounded-none border border-[var(--accent-primary)]/30 bg-[var(--accent-primary)]/10 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-wider text-[var(--accent-primary)]">
                         AI Chatbot Integration
                       </div>
-                      <h3 className="font-display text-[1.65rem] leading-tight text-[var(--text-100)]">{project.name}</h3>
+                      <h3 className="font-display text-xl sm:text-[1.65rem] leading-tight text-[var(--text-100)]">{project.name}</h3>
                       <p className="mt-3 text-[0.95rem] font-medium text-[var(--accent-secondary)]">{project.tagline}</p>
 
                       <div className="mt-6 grid gap-4 md:grid-cols-2">

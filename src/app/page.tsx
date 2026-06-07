@@ -17,7 +17,7 @@ export default function HomePage() {
   return (
     <div className="relative isolate min-h-screen overflow-x-clip">
       {/* ── Main content container ────────────────────────────────────── */}
-      <div className="relative z-20 mx-auto max-w-[1400px] border-x border-[var(--border-color)] bg-[var(--bg-950)]/80 backdrop-blur-sm overflow-hidden">
+      <div className="relative z-20 mx-auto w-full max-w-[1400px] border-x border-[var(--border-color)] bg-[var(--bg-950)]/80 backdrop-blur-sm overflow-hidden">
         {/* ── Background layer ──────────────────────────────────────────────
             Includes: radial glows, grid, dots, cursor glow, parallax ASCII art
             All confined to the background (z-0), behind the main content.
@@ -56,8 +56,8 @@ export default function HomePage() {
 
 function Section({ children, tight }: { children: React.ReactNode; tight?: boolean }) {
   return (
-    <section className={tight ? "px-6 py-10 sm:px-10 md:px-16" : "px-6 py-20 sm:px-10 md:px-16"}>
+    <div className={tight ? "px-4 py-8 sm:px-10 md:px-16" : "px-4 py-16 sm:px-10 md:px-16"}>
       {children}
-    </section>
+    </div>
   );
 }

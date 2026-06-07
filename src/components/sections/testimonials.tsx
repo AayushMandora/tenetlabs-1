@@ -39,7 +39,7 @@ export function TestimonialsSection() {
         <SectionHeading eyebrow="Testimonials" title={siteContent.testimonials.heading} />
       </Reveal>
 
-      <Stagger className="grid gap-4 lg:grid-cols-3">
+      <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {siteContent.testimonials.items.map((testimonial) => (
           <StaggerItem key={testimonial.name} className="h-full">
             <MouseGlow
