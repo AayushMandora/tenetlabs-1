@@ -58,41 +58,5 @@ export function Floating({
 }
 
 export function CursorGlow() {
-  const shouldReduceMotion = useHydratedReducedMotion();
-  const hasFinePointer = useSyncExternalStore(
-    subscribePointer,
-    getPointerSnapshot,
-    getPointerSnapshotServer
-  );
-  const x = useMotionValue(-200);
-  const y = useMotionValue(-200);
-  const springX = useSpring(x, { stiffness: 150, damping: 26, mass: 0.16 });
-  const springY = useSpring(y, { stiffness: 150, damping: 26, mass: 0.16 });
-
-  useEffect(() => {
-    if (shouldReduceMotion || !hasFinePointer) return;
-
-    const onMove = (event: MouseEvent) => {
-      x.set(event.clientX - 192);
-      y.set(event.clientY - 192);
-    };
-
-    window.addEventListener("mousemove", onMove, { passive: true });
-
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-    };
-  }, [hasFinePointer, shouldReduceMotion, x, y]);
-
-  if (!hasFinePointer || shouldReduceMotion) {
-    return null;
-  }
-
-  return (
-    <m.div
-      aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-30 hidden h-96 w-96 rounded-none bg-[radial-gradient(circle,var(--cursor-glow),transparent_70%)] blur-2xl lg:block"
-      style={{ x: springX, y: springY }}
-    />
-  );
+  return null;
 }

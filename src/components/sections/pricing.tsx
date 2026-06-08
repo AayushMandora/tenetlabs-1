@@ -43,28 +43,21 @@ export function PricingSection() {
         />
       </Reveal>
 
-      <Stagger className="grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <Stagger className="grid gap-[24px] lg:gap-[32px] md:grid-cols-2 lg:grid-cols-3">
         {siteContent.pricing.plans.map((plan) => {
           return (
             <StaggerItem key={plan.name}>
               <MouseGlow
-                className={cn(
-                  "relative flex h-full flex-col",
-                  plan.featured && "shadow-[0_0_40px_var(--glow-1)]"
-                )}
-                containerClassName="p-5 sm:p-6 lg:p-8 flex flex-col h-full justify-between relative"
-                glowColor="var(--glow-color)"
+                className="relative flex h-full flex-col"
+                containerClassName="p-5 sm:p-6 flex flex-col h-full justify-between relative"
               >
                 <CornerGuides label={`price_${plan.name.split(" ")[0].toLowerCase()}`} />
                 {/* Top visual banner */}
-                <div 
-                  className="relative flex flex-col items-start gap-4 mb-8 transition-transform duration-500 [transform-style:preserve-3d]"
-                  style={{ transform: "translateZ(35px)" }}
-                >
+                <div className="relative flex flex-col items-start gap-4 mb-6">
                   <div className="flex w-full items-start justify-between">
                     <div className="flex flex-col gap-3">
                       {plan.featured && (
-                        <span className="w-fit rounded-none border border-[var(--panel-border)] bg-[var(--text-100)]/[0.08] px-2.5 py-1 text-[0.65rem] font-semibold tracking-wide text-[var(--accent-primary)] uppercase">
+                        <span className="w-fit rounded-none border border-[var(--panel-border)] bg-[var(--text-100)]/[0.08] px-2.5 py-1 text-[12px] font-semibold tracking-wide text-[var(--accent-primary)] uppercase">
                           Popular
                         </span>
                       )}
@@ -81,22 +74,22 @@ export function PricingSection() {
                   </div>
 
                   <div>
-                    <h3 className="font-display text-2xl font-bold tracking-tight text-[var(--text-100)]">{plan.name}</h3>
-                    <p className="mt-1.5 text-xs text-[var(--text-dim)] font-medium">{plan.perfectFor}</p>
+                    <h3 className="font-display text-xl font-bold tracking-tight text-[var(--text-100)]">{plan.name}</h3>
+                    <p className="mt-1.5 text-[12px] text-[var(--text-dim)] font-medium">{plan.perfectFor}</p>
                   </div>
 
-                  <div className="mt-4 flex flex-col justify-end min-h-[64px]">
+                  <div className="mt-4 flex flex-col justify-end min-h-[56px]">
                     {plan.price.includes("$") ? (
                       <>
-                        <span className="text-[0.62rem] font-black uppercase tracking-[0.15em] text-[var(--text-dim)]">
+                        <span className="text-[12px] font-bold uppercase tracking-[0.15em] text-[var(--text-dim)]">
                           Starting at
                         </span>
-                        <span className="font-display text-4xl font-extrabold tracking-tight text-[var(--text-100)] mt-1">
+                        <span className="font-display text-3xl font-extrabold tracking-tight text-[var(--text-100)] mt-1">
                           {plan.price.replace(/^starting\s+at\s+/i, "")}
                         </span>
                       </>
                     ) : (
-                      <span className="font-display text-4xl font-extrabold tracking-tight text-[var(--text-100)]">
+                      <span className="font-display text-3xl font-extrabold tracking-tight text-[var(--text-100)]">
                         {plan.price}
                       </span>
                     )}
@@ -104,26 +97,23 @@ export function PricingSection() {
                 </div>
 
                 {/* Features */}
-                <div 
-                  className="flex flex-1 flex-col justify-between border-t border-[var(--border-color)] pt-8 transition-transform duration-500 [transform-style:preserve-3d]"
-                  style={{ transform: "translateZ(20px)" }}
-                >
+                <div className="flex flex-1 flex-col justify-between border-t border-[var(--border-color)] pt-6">
                   <ul className="grid grid-cols-1 gap-3.5">
                     {plan.includes.map((item) => (
                       <li key={item} className="flex items-center gap-3">
                         <svg className="h-4 w-4 shrink-0 text-[var(--accent-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-[0.85rem] text-[var(--text-soft)] font-medium">{item}</span>
+                        <span className="text-[13px] text-[var(--text-soft)] font-medium leading-[1.6]">{item}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-10">
+                  <div className="mt-8">
                     <a
                       href={plan.ctaHref}
                       className={cn(
-                        "flex w-full items-center justify-center rounded-none px-4 py-3 text-sm font-semibold transition-all duration-200",
+                        "flex w-full items-center justify-center rounded-none px-4 py-3 text-[14px] font-semibold transition-all duration-200",
                         plan.featured
                           ? "border border-[var(--panel-border)] bg-[var(--bg-900)] text-[var(--text-100)] hover:border-[var(--panel-hover-border)] hover:bg-[var(--surface-800)]"
                           : "border border-transparent bg-[var(--text-100)]/[0.05] text-[var(--text-100)] hover:bg-[var(--text-100)]/[0.10]"

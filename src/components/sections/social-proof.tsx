@@ -38,7 +38,7 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   }, [isInView, value]);
 
   return (
-    <p ref={ref} className="font-display text-[2.15rem] text-[var(--text-100)] sm:text-[2.55rem]">
+    <p ref={ref} className="font-display text-4xl font-extrabold leading-none text-[var(--text-100)]">
       {displayValue}
       {suffix}
     </p>
@@ -47,18 +47,18 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 
 export function SocialProofSection() {
   return (
-    <section aria-labelledby="social-proof-heading" className="space-y-6">
+    <section aria-labelledby="social-proof-heading" className="space-y-10">
       <Reveal>
         <SectionHeading eyebrow="Social Proof" title={siteContent.socialProof.heading} className="max-w-4xl" />
       </Reveal>
 
-      <Reveal className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-6">
+      <Reveal className="grid grid-cols-2 gap-px overflow-hidden rounded-[8px] border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3 lg:grid-cols-6">
         {siteContent.config.clientLogos.map((logo) => (
           <div
             key={logo}
             className={cn(
               subtlePanel,
-              "flex min-h-16 items-center justify-center px-3 text-center text-xs font-semibold tracking-[0.12em] text-[var(--text-soft)] sm:text-sm"
+              "flex min-h-20 items-center justify-center rounded-none border-0 px-3 text-center text-[13px] font-bold uppercase tracking-[0.16em] text-[var(--text-soft)] transition hover:bg-white/[0.07]"
             )}
           >
             {logo}
@@ -66,11 +66,11 @@ export function SocialProofSection() {
         ))}
       </Reveal>
 
-      <Reveal className="grid gap-3 sm:grid-cols-3">
+      <Reveal className="grid gap-[24px] lg:gap-[32px] sm:grid-cols-3">
         {siteContent.socialProof.stats.map((stat) => (
-          <article key={stat.label} className={cn(panelBase, panelHover, "rounded-none p-5 sm:p-6")}>
+          <article key={stat.label} className={cn(panelBase, panelHover, "relative overflow-hidden p-5 sm:p-6")}>
             <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-            <p className="mt-2 text-sm text-[var(--text-muted)]">{stat.label}</p>
+            <p className="mt-3 text-[14px] font-bold uppercase tracking-[0.16em] text-[var(--text-muted)]">{stat.label}</p>
           </article>
         ))}
       </Reveal>

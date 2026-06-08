@@ -30,7 +30,7 @@ export function FaqSection() {
               <h3>
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between px-5 py-4 text-left text-sm font-semibold text-[var(--text-100)] transition hover:bg-[var(--text-100)]/[0.02] sm:text-base"
+                  className="flex w-full items-center justify-between px-[18px] py-[14px] text-left text-[15px] font-semibold text-[var(--text-100)] transition hover:bg-[var(--text-100)]/[0.02]"
                   aria-expanded={isOpen}
                   aria-controls={contentId}
                   onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -53,10 +53,10 @@ export function FaqSection() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.28, ease: [0.18, 1, 0.32, 1] }}
+                    transition={{ duration: 0.2, ease: [0.18, 1, 0.32, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="px-5 pb-4 text-sm leading-relaxed text-[var(--text-muted)]">
+                    <p className="px-[18px] pb-[14px] text-[14px] leading-[1.6] text-[var(--text-muted)]">
                       {item.answer}
                     </p>
                   </m.div>

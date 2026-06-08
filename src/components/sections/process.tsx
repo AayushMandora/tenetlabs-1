@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { m } from "framer-motion";
+import { CheckCircle2 } from "lucide-react";
 
-import { siteContent } from "@/content/site-content";
+import { MouseGlow } from "@/components/motion/mouse-glow";
 import { Reveal } from "@/components/motion/reveal";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
+import { CornerGuides } from "@/components/shared/corner-guides";
 import { SectionHeading } from "@/components/shared/section-heading";
-import { MouseGlow } from "@/components/motion/mouse-glow";
+import { siteContent } from "@/content/site-content";
 import { cn } from "@/lib/cn";
 
 const stepChecklists: Record<string, string[]> = {
@@ -17,131 +19,88 @@ const stepChecklists: Record<string, string[]> = {
   "04": ["Production DNS & CDN provisioning", "SEO & performance audits", "Handover and 30-day monitor launch"],
 };
 
-const stepIndexMap: Record<string, number> = {
-  "01": 1,
-  "02": 2,
-  "03": 3,
-  "04": 4,
-};
-
 export function ProcessSection() {
   const [hoveredStep, setHoveredStep] = useState<string | null>(null);
-
-  const activeIdx = hoveredStep ? stepIndexMap[hoveredStep] : 0;
+  const activeIndex = siteContent.process.items.findIndex((item) => item.step === hoveredStep);
+  const progress = hoveredStep ? ((activeIndex + 1) / siteContent.process.items.length) * 100 : 25;
 
   return (
-    <section id="process" className="space-y-8">
+    <section id="process" className="space-y-12">
       <Reveal>
-        <SectionHeading eyebrow="How It Works" title={siteContent.process.heading} className="max-w-4xl" />
+        <SectionHeading eyebrow="How It Works" title={siteContent.process.heading} className="max-w-5xl" />
       </Reveal>
 
       <div className="relative">
-        {/* Desktop Interactive Horizontal Timeline Connector */}
-        <div className="absolute top-[100px] left-[12.5%] right-[12.5%] h-[1px] bg-[var(--border-color)] hidden xl:block z-0">
-          {/* Glowing Track Segment */}
+        <div className="absolute left-0 right-0 top-9 hidden h-px bg-white/[0.08] lg:block">
           <m.div
-            className="h-full bg-[var(--accent-primary)] shadow-[0_0_8px_var(--accent-primary)]"
-            initial={{ width: "0%" }}
-            animate={{
-              width:
-                activeIdx === 2 ? "33.33%" :
-                activeIdx === 3 ? "66.66%" :
-                activeIdx === 4 ? "100%" : "0%"
-            }}
-            transition={{ type: "spring", stiffness: 70, damping: 14 }}
+            className="h-full bg-[var(--accent-primary)] shadow-[0_0_28px_rgba(124,58,237,0.58)]"
+            animate={{ width: `${progress}%` }}
+            transition={{ type: "spring", stiffness: 80, damping: 18 }}
           />
-
-          {/* Dots */}
-          {([1, 2, 3, 4] as const).map((dotNum) => {
-            const isLit = activeIdx >= dotNum || (activeIdx === 0 && dotNum === 1);
-            const position = `${(dotNum - 1) * 33.33}%`;
-
-            return (
-              <div
-                key={dotNum}
-                className={cn(
-                  "absolute top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-none border bg-[var(--bg-950)] transition-all duration-300 z-10",
-                  isLit
-                    ? "border-[var(--accent-primary)] bg-[var(--text-100)] shadow-[0_0_10px_var(--accent-primary)] scale-110"
-                    : "border-[var(--panel-border)]"
-                )}
-                style={{ left: position, transform: "translate(-50%, -50%)" }}
-              />
-            );
-          })}
         </div>
 
-        <Stagger className="relative z-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4" delayChildren={0.07}>
-          {siteContent.process.items.map((step) => {
-            const isHovered = hoveredStep === step.step;
+        <Stagger className="grid gap-[24px] lg:gap-[32px] lg:grid-cols-4" delayChildren={0.05}>
+          {siteContent.process.items.map((step, index) => {
+            const isActive = hoveredStep === step.step || (!hoveredStep && index === 0);
 
             return (
               <StaggerItem key={step.step} className="h-full">
-                <div
-                  className="h-full transition-transform duration-300 ease-out"
-                  style={{
-                    transform: isHovered ? "translateY(-4px)" : "translateY(0)"
-                  }}
+                <MouseGlow
+                  className="h-full"
+                  containerClassName="relative flex h-full flex-col p-5 sm:p-6"
                   onMouseEnter={() => setHoveredStep(step.step)}
                   onMouseLeave={() => setHoveredStep(null)}
                 >
-                  <MouseGlow
-                    className="h-full"
-                    containerClassName="relative h-full flex flex-col p-6 sm:p-8 overflow-hidden"
-                    glowColor="var(--glow-color)"
-                  >
-                    <m.div
-                      className="pointer-events-none absolute -right-4 -top-6 select-none font-display text-[9rem] font-bold leading-none text-[var(--text-100)] z-0"
-                      animate={{
-                        y: isHovered ? -12 : 0,
-                        opacity: isHovered ? 0.045 : 0.015,
-                        scale: isHovered ? 1.06 : 1,
-                      }}
-                      transition={{ duration: 0.3 }}
+                  <CornerGuides label={step.step} />
+
+                  <div className="relative z-10 flex items-center justify-between">
+                    <span
+                      className={cn(
+                        "flex h-12 w-12 items-center justify-center rounded-[8px] border font-display text-lg font-bold transition",
+                        isActive
+                          ? "border-[var(--accent-primary)]/55 bg-[var(--accent-primary)]/14 text-[var(--text-100)]"
+                          : "border-white/[0.1] bg-white/[0.035] text-[var(--text-muted)]"
+                      )}
                     >
                       {step.step}
-                    </m.div>
+                    </span>
+                    <span className="rounded-[8px] border border-white/[0.1] bg-white/[0.035] px-2.5 py-1 text-[12px] font-bold uppercase tracking-[0.18em] text-[var(--text-muted)]">
+                      {step.timeline}
+                    </span>
+                  </div>
 
-                    <div className="relative z-10">
-                      <p className="font-display text-2xl text-[var(--accent-primary)]">{step.step}</p>
-                      <h3 className="mt-4 font-display text-xl font-semibold text-[var(--text-100)]">{step.title}</h3>
-                      <p className="mt-1.5 text-xs font-semibold text-[var(--text-muted)] uppercase tracking-wider">{step.timeline}</p>
-                      <p className="mt-4 text-[0.92rem] leading-relaxed text-[var(--text-soft)] font-medium md:min-h-[85px]">{step.description}</p>
-                    </div>
+                  <div className="relative z-10 mt-6">
+                    <h3 className="font-display text-xl font-bold leading-tight text-[var(--text-100)]">
+                      {step.title}
+                    </h3>
+                    <p className="mt-3 text-[14px] font-medium leading-[1.6] text-[var(--text-muted)]">
+                      {step.description}
+                    </p>
+                  </div>
 
-                    {/* Sprint Checklist - always visible and stable */}
-                    <div className="mt-6 border-t border-[var(--border-color)] pt-4 space-y-2 text-left z-10 md:min-h-[110px]">
-                      <p className="text-[0.62rem] font-black uppercase tracking-widest text-[var(--text-muted)]">Sprint Checklist</p>
-                      <ul className="space-y-2 text-[0.68rem] text-[var(--text-soft)]">
-                        {stepChecklists[step.step].map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <svg
-                              className={cn(
-                                "mt-0.5 h-3.5 w-3.5 shrink-0 transition-colors duration-250",
-                                isHovered ? "text-[var(--accent-primary)]" : "text-[var(--text-muted)]/30"
-                              )}
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                            </svg>
-                            <span className={cn("transition-colors duration-250 font-medium", isHovered ? "text-[var(--text-100)]" : "text-[var(--text-soft)]/70")}>
-                              {item}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  <div className="relative z-10 mt-6 space-y-3 border-t border-white/[0.08] pt-4">
+                    <p className="font-mono text-[12px] font-bold uppercase tracking-[0.22em] text-[var(--text-dim)]">
+                      Sprint Checklist
+                    </p>
+                    <ul className="space-y-2.5">
+                      {stepChecklists[step.step].map((item) => (
+                        <li key={item} className="flex items-start gap-2.5 text-[12px] font-semibold leading-[1.6] text-[var(--text-soft)]/78">
+                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[var(--accent-primary)]" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                    <div className="relative z-10 mt-auto pt-6 rounded-xl border border-[var(--border-color)] bg-[var(--bg-900)]/40 p-4 backdrop-blur-sm">
-                      <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[var(--accent-primary)]">
+                  <div className="relative z-10 mt-auto pt-6">
+                    <div className="rounded-[8px] border border-white/[0.09] bg-black/20 p-3.5">
+                      <p className="text-[12px] font-bold uppercase tracking-[0.22em] text-[var(--accent-primary)]">
                         Deliverable
                       </p>
-                      <p className="mt-1.5 text-sm font-semibold text-[var(--text-100)]">{step.deliverable}</p>
+                      <p className="mt-1.5 text-[13px] font-bold text-[var(--text-100)]">{step.deliverable}</p>
                     </div>
-                  </MouseGlow>
-                </div>
+                  </div>
+                </MouseGlow>
               </StaggerItem>
             );
           })}

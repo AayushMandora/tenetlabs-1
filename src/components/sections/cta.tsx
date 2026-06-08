@@ -73,14 +73,8 @@ export function CtaSection() {
 
   return (
     <section id="contact">
-      <Reveal className="relative overflow-hidden rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)] p-6 sm:p-8 lg:p-10">
-        {/* Ambient background glow */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(520px_220px_at_100%_0%,var(--glow-1),transparent_68%),radial-gradient(420px_200px_at_0%_100%,var(--glow-2),transparent_70%)]"
-        />
-
-        <div className="relative z-10 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <Reveal className="relative overflow-hidden rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)] p-5 sm:p-6 lg:p-8">
+        <div className="relative z-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div className="space-y-5 text-left">
             <SectionHeading
               eyebrow="Ready to Build?"
@@ -94,21 +88,18 @@ export function CtaSection() {
               </Button>
               <a
                 href={`mailto:${siteContent.config.email}`}
-                className="text-sm font-medium text-[var(--accent-primary)] transition hover:text-[var(--text-100)]"
+                className="text-[14px] font-medium text-[var(--accent-primary)] transition hover:text-[var(--text-100)]"
               >
                 {siteContent.cta.secondaryText}
               </a>
             </div>
           </div>
 
-          <Floating distance={3} duration={10}>
-            <div className="w-full max-w-sm mx-auto lg:max-w-none">
-              <MouseGlow
-                glowColor="var(--glow-1)"
-                glowSize={250}
-                className="rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)]"
-                containerClassName="p-6 flex flex-col justify-between min-h-[280px]"
-              >
+          <div className="w-full max-w-sm mx-auto lg:max-w-none">
+            <MouseGlow
+              className="rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)]"
+              containerClassName="p-5 sm:p-6 flex flex-col justify-between min-h-[280px]"
+            >
                 <AnimatePresence mode="wait">
                   {!mounted || dates.length === 0 ? (
                     // Skeleton State
@@ -149,11 +140,11 @@ export function CtaSection() {
                       <div>
                         {/* Header */}
                         <div className="flex justify-between items-center pb-2.5 border-b border-[var(--border-color)] mb-4">
-                          <span className="text-[0.65rem] font-bold text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5">
+                          <span className="text-[12px] font-bold text-[var(--text-muted)] uppercase tracking-wider flex items-center gap-1.5">
                             <span className="h-1.5 w-1.5 rounded-none bg-green-500 animate-pulse" />
                             Live Availability
                           </span>
-                          <span className="text-[0.55rem] font-bold text-[var(--accent-primary)] uppercase tracking-wider">
+                          <span className="text-[12px] font-bold text-[var(--accent-primary)] uppercase tracking-wider">
                             Calendly Sync
                           </span>
                         </div>
@@ -164,9 +155,9 @@ export function CtaSection() {
                             <button
                               key={idx}
                               onClick={(e) => {
-                                e.preventDefault();
-                                setSelectedDateIdx(idx);
-                                setSelectedSlot(null);
+                                  e.preventDefault();
+                                  setSelectedDateIdx(idx);
+                                  setSelectedSlot(null);
                               }}
                               className={cn(
                                 "flex flex-col items-center justify-center p-2 border flex-1 transition-all rounded-none cursor-pointer",
@@ -175,8 +166,8 @@ export function CtaSection() {
                                   : "border-[var(--panel-border)] bg-[var(--text-100)]/[0.01] text-[var(--text-muted)] hover:border-[var(--panel-hover-border)] hover:text-[var(--text-100)]"
                               )}
                             >
-                              <span className="text-[0.5rem] font-bold uppercase tracking-wider">{d.dayName}</span>
-                              <span className="text-xs font-black mt-0.5">{d.dateString.split(" ")[1]}</span>
+                              <span className="text-[12px] font-bold uppercase tracking-wider">{d.dayName}</span>
+                              <span className="text-xs font-bold mt-0.5">{d.dateString.split(" ")[1]}</span>
                             </button>
                           ))}
                         </div>
@@ -193,7 +184,7 @@ export function CtaSection() {
                                   setSelectedSlot(slot);
                                 }}
                                 className={cn(
-                                  "flex items-center justify-center gap-1.5 p-2.5 border text-[0.62rem] font-bold tracking-wider transition-all rounded-none cursor-pointer",
+                                  "flex items-center justify-center gap-1.5 p-2.5 border text-[12px] font-bold tracking-wider transition-all rounded-none cursor-pointer",
                                   isSelected
                                     ? "border-[var(--accent-primary)] bg-[var(--accent-primary)]/10 text-[var(--text-100)]"
                                     : "border-[var(--panel-border)] bg-[var(--text-100)]/[0.01] text-[var(--text-soft)] hover:border-[var(--panel-hover-border)] hover:text-[var(--text-100)]"
@@ -216,7 +207,7 @@ export function CtaSection() {
                             if (selectedSlot) setIsConfirmed(true);
                           }}
                           className={cn(
-                             "w-full py-2.5 flex items-center justify-center gap-1.5 text-[0.65rem] font-black uppercase tracking-widest transition-all rounded-none cursor-pointer",
+                             "w-full py-2.5 flex items-center justify-center gap-1.5 text-[12px] font-bold uppercase tracking-widest transition-all rounded-none cursor-pointer",
                              selectedSlot
                                ? "bg-[var(--text-100)] text-[var(--bg-950)] hover:bg-[var(--text-100)]/90 active:scale-[0.98]"
                                : "bg-[var(--text-100)]/[0.05] text-[var(--text-100)]/20 border border-[var(--border-color)] cursor-not-allowed"
@@ -240,18 +231,18 @@ export function CtaSection() {
                         <div className="h-10 w-10 rounded-none border border-green-500/20 bg-green-500/10 flex items-center justify-center text-green-400 mb-4 animate-bounce">
                           <Check className="h-5 w-5" />
                         </div>
-                        <h4 className="text-xs font-black uppercase tracking-wider text-[var(--text-100)]">
+                        <h4 className="text-[12px] font-bold uppercase tracking-wider text-[var(--text-100)]">
                           Time Slot Reserved
                         </h4>
-                        <p className="text-[0.62rem] text-[var(--text-muted)] mt-1 uppercase tracking-widest">
+                        <p className="text-[12px] text-[var(--text-muted)] mt-1 uppercase tracking-widest">
                           TenetLabs Discovery Sprint
                         </p>
 
                         <div className="mt-4 px-4 py-2 bg-[var(--text-100)]/[0.02] border border-[var(--border-color)] rounded-none inline-flex items-center gap-2">
-                          <span className="text-[0.65rem] font-bold text-[var(--text-100)]">
+                          <span className="text-[12px] font-bold text-[var(--text-100)]">
                             {dates[selectedDateIdx].fullDate} @ {selectedSlot}
                           </span>
-                          <span className="text-[0.55rem] font-bold text-[var(--text-dim)] uppercase tracking-widest">EST</span>
+                          <span className="text-[12px] font-bold text-[var(--text-dim)] uppercase tracking-widest">EST</span>
                         </div>
                       </div>
 
@@ -260,7 +251,7 @@ export function CtaSection() {
                           href={siteContent.config.calendlyUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="w-full py-2.5 bg-[var(--text-100)] text-[var(--bg-950)] hover:bg-[var(--text-100)]/90 active:scale-[0.98] flex items-center justify-center gap-1.5 text-[0.65rem] font-black uppercase tracking-widest transition-all rounded-none"
+                          className="w-full py-2.5 bg-[var(--text-100)] text-[var(--bg-950)] hover:bg-[var(--text-100)]/90 active:scale-[0.98] flex items-center justify-center gap-1.5 text-[12px] font-bold uppercase tracking-widest transition-all rounded-none"
                         >
                           Confirm details on Calendly <Sparkles className="h-3 w-3 shrink-0" />
                         </a>
@@ -270,7 +261,7 @@ export function CtaSection() {
                             setIsConfirmed(false);
                             setSelectedSlot(null);
                           }}
-                          className="text-[0.55rem] font-bold uppercase tracking-wider text-[var(--text-dim)] hover:text-[var(--text-soft)] transition cursor-pointer"
+                          className="text-[12px] font-bold uppercase tracking-wider text-[var(--text-dim)] hover:text-[var(--text-soft)] transition cursor-pointer"
                         >
                           Choose another slot
                         </button>
@@ -280,7 +271,6 @@ export function CtaSection() {
                 </AnimatePresence>
               </MouseGlow>
             </div>
-          </Floating>
         </div>
       </Reveal>
     </section>
