@@ -39,56 +39,48 @@ export function TestimonialsSection() {
         <SectionHeading eyebrow="Testimonials" title={siteContent.testimonials.heading} />
       </Reveal>
 
-      <Stagger className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <Stagger className="grid gap-[24px] lg:gap-[32px] md:grid-cols-2 lg:grid-cols-3">
         {siteContent.testimonials.items.map((testimonial) => (
           <StaggerItem key={testimonial.name} className="h-full">
             <MouseGlow
               className="h-full rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)]"
-              containerClassName="group relative flex h-full flex-col p-7 overflow-hidden"
-              glowColor="var(--glow-color)"
+              containerClassName="group relative flex h-full flex-col p-6 sm:p-7 overflow-hidden"
             >
               {/* Top accent bar */}
               <div className="absolute top-0 left-0 h-[2px] w-full bg-[var(--text-100)]/60 opacity-75" />
 
-              <div className="flex flex-1 flex-col justify-between [transform-style:preserve-3d]">
+              <div className="flex flex-1 flex-col justify-between">
                 {/* Stars and big quote */}
-                <div 
-                  className="transition-transform duration-500 [transform-style:preserve-3d]"
-                  style={{ transform: "translateZ(35px)" }}
-                >
+                <div>
                   <Stars />
-                  <blockquote className="relative mt-5">
+                  <blockquote className="relative mt-4">
                     <span
                       aria-hidden
                       className="pointer-events-none absolute -left-2 -top-4 select-none font-display text-5xl leading-none text-[var(--text-100)]/[0.03]"
                     >
                       &ldquo;
                     </span>
-                    <p className="relative text-[0.95rem] font-medium leading-relaxed text-[var(--text-soft)]">
+                    <p className="relative text-[15px] font-medium leading-[1.6] text-[var(--text-soft)]">
                       {testimonial.quote}
                     </p>
                   </blockquote>
                 </div>
 
                 {/* Bottom author and badge row */}
-                <div 
-                  className="transition-transform duration-500 [transform-style:preserve-3d]"
-                  style={{ transform: "translateZ(20px)" }}
-                >
+                <div>
                   {/* Author row */}
-                  <div className="mt-8 flex flex-col gap-6 border-t border-[var(--border-color)] pt-6">
+                  <div className="mt-6 flex flex-col gap-6 border-t border-[var(--border-color)] pt-5">
                     <div className="flex items-center gap-4">
                       <Avatar name={testimonial.name} />
                       <div className="min-w-0">
-                        <p className="font-display text-[0.95rem] font-semibold text-[var(--text-100)] truncate">
+                        <p className="font-display text-[15px] font-semibold text-[var(--text-100)] truncate">
                           {testimonial.name}
                         </p>
-                        <p className="text-[0.8rem] text-[var(--text-muted)] truncate">
+                        <p className="text-[12px] text-[var(--text-muted)] truncate">
                           {testimonial.role} · {testimonial.company}
                         </p>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import type React from "react";
+
 import { AsciiBackground } from "@/components/motion/ascii-background";
 import { CtaSection } from "@/components/sections/cta";
 import { FaqSection } from "@/components/sections/faq";
@@ -8,6 +9,7 @@ import { HeroSection } from "@/components/sections/hero";
 import { PortfolioSection } from "@/components/sections/portfolio";
 import { PricingSection } from "@/components/sections/pricing";
 import { ProcessSection } from "@/components/sections/process";
+import { ServicesSection } from "@/components/sections/services";
 import { SocialProofSection } from "@/components/sections/social-proof";
 import { TechStackSection } from "@/components/sections/tech-stack";
 import { TestimonialsSection } from "@/components/sections/testimonials";
@@ -15,49 +17,76 @@ import { WhyUsSection } from "@/components/sections/why-us";
 
 export default function HomePage() {
   return (
-    <div className="relative isolate min-h-screen overflow-x-clip">
-      {/* ── Main content container ────────────────────────────────────── */}
-      <div className="relative z-20 mx-auto w-full max-w-[1400px] border-x border-[var(--border-color)] bg-[var(--bg-950)]/80 backdrop-blur-sm overflow-hidden">
-        {/* ── Background layer ──────────────────────────────────────────────
-            Includes: radial glows, grid, dots, cursor glow, parallax ASCII art
-            All confined to the background (z-0), behind the main content.
-            Moved inside the container to remain crisp (not blurred by container's backdrop-blur). */}
-        <AsciiBackground />
-        <div className="relative z-10 border-b border-[var(--border-color)] bg-[var(--header-bg)]">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.8]"
-            style={{
-              backgroundImage: `radial-gradient(900px 500px at 0% 0%, var(--glow-1), transparent 70%),
-                                radial-gradient(700px 400px at 100% 0%, var(--glow-2), transparent 70%)`
-            }}
-          />
-          <HeaderSection />
-        </div>
+    <div className="relative isolate min-h-screen overflow-x-clip bg-[var(--bg-950)]">
+      <AsciiBackground />
 
-        {/* Sections stacked with dividers */}
-        <div className="relative z-10 divide-y divide-[var(--border-color)]">
-          <Section><HeroSection /></Section>
-          <Section tight><SocialProofSection /></Section>
-          <Section><ProcessSection /></Section>
-          <Section><TechStackSection /></Section>
-          <Section><PortfolioSection /></Section>
-          <Section><WhyUsSection /></Section>
-          <Section><PricingSection /></Section>
-          <Section><TestimonialsSection /></Section>
-          <Section><FaqSection /></Section>
-          <Section><CtaSection /></Section>
-          <Section tight><FooterSection /></Section>
-        </div>
+      <div className="relative z-10 w-full">
+        <HeaderSection />
+
+        <main className="relative">
+          <Section hero>
+            <HeroSection />
+          </Section>
+          <Section tight>
+            <SocialProofSection />
+          </Section>
+          <Section>
+            <ServicesSection />
+          </Section>
+          <Section muted>
+            <ProcessSection />
+          </Section>
+          <Section>
+            <TechStackSection />
+          </Section>
+          <Section muted>
+            <PortfolioSection />
+          </Section>
+          <Section>
+            <WhyUsSection />
+          </Section>
+          <Section muted>
+            <PricingSection />
+          </Section>
+          <Section>
+            <TestimonialsSection />
+          </Section>
+          <Section muted>
+            <FaqSection />
+          </Section>
+          <Section>
+            <CtaSection />
+          </Section>
+          <Section tight>
+            <FooterSection />
+          </Section>
+        </main>
       </div>
     </div>
   );
 }
 
-function Section({ children, tight }: { children: React.ReactNode; tight?: boolean }) {
+function Section({
+  children,
+  hero,
+  tight,
+  muted,
+}: {
+  children: React.ReactNode;
+  hero?: boolean;
+  tight?: boolean;
+  muted?: boolean;
+}) {
   return (
-    <div className={tight ? "px-4 py-8 sm:px-10 md:px-16" : "px-4 py-16 sm:px-10 md:px-16"}>
-      {children}
-    </div>
+    <section
+      className={[
+        "relative overflow-hidden border-t border-white/[0.07] w-full",
+        hero ? "pt-[120px] pb-[120px]" : tight ? "py-[48px]" : "py-[120px]",
+        muted ? "bg-white/[0.018]" : "bg-transparent",
+      ].join(" ")}
+    >
+      <div aria-hidden className="absolute left-0 top-0 h-px w-full bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent)]" />
+      <div className="relative z-10 mx-auto w-full max-w-[1280px] px-[20px] md:px-[32px] lg:px-[40px]">{children}</div>
+    </section>
   );
 }

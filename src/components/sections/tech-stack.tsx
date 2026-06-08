@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { AnimatePresence, m } from "framer-motion";
 
-import { siteContent } from "@/content/site-content";
-
+import { MouseGlow } from "@/components/motion/mouse-glow";
 import { Reveal } from "@/components/motion/reveal";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
-import { SectionHeading } from "@/components/shared/section-heading";
 import { CornerGuides } from "@/components/shared/corner-guides";
+import { SectionHeading } from "@/components/shared/section-heading";
+import { siteContent } from "@/content/site-content";
+import { cn } from "@/lib/cn";
 
 const techDescriptions: Record<string, string> = {
   React: "Declarative UI component development for complex frontend structures.",
@@ -38,8 +39,6 @@ const techDescriptions: Record<string, string> = {
   "CRM APIs": "Synchronize dynamic client profiles with HubSpot, Salesforce, and custom CRMs.",
   "REST & GraphQL": "API specifications resolving data queries cleanly between backend and client.",
 };
-
-import { cn } from "@/lib/cn";
 
 const techIconFiles: Record<string, string> = {
   React: "react.svg",
@@ -82,21 +81,19 @@ const monochromeTechs = new Set([
   "AWS",
 ]);
 
-function renderTechIcon(item: string) {
+function TechIcon({ item }: { item: string }) {
   const fileName = techIconFiles[item];
+
   if (!fileName) {
-    return (
-      <span className="text-[0.6rem] font-bold text-[var(--text-muted)]">
-        {item.slice(0, 2).toUpperCase()}
-      </span>
-    );
+    return <span className="text-[0.62rem] font-black text-[var(--text-muted)]">{item.slice(0, 2).toUpperCase()}</span>;
   }
-  const isMonochrome = monochromeTechs.has(item);
+
   return (
     <img
       src={`/icons/${fileName}`}
       alt={`${item} logo`}
-      className={cn("h-5 w-5 object-contain", isMonochrome && "logo-monochrome")}
+      loading="lazy"
+      className={cn("h-5 w-5 object-contain opacity-85", monochromeTechs.has(item) && "logo-monochrome")}
     />
   );
 }
@@ -104,11 +101,8 @@ function renderTechIcon(item: string) {
 export function TechStackSection() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
-  // Flatten all tech items from all categories
-  const allTechItems = siteContent.techStack.categories.flatMap((category) => category.items);
-
   return (
-    <section className="space-y-8">
+    <section className="space-y-12">
       <Reveal>
         <SectionHeading
           eyebrow="Technology Stack"
@@ -117,42 +111,60 @@ export function TechStackSection() {
         />
       </Reveal>
 
-      <div className="relative border border-[var(--border-color)] bg-[var(--surface-800)]/5 p-6 sm:p-8 overflow-hidden space-y-6 rounded-2xl">
+      <div className="relative rounded-[8px] border border-white/[0.1] bg-white/[0.025] p-3 backdrop-blur-sm sm:p-4">
         <CornerGuides label="tech_spec_03" />
-        <Stagger className="grid grid-cols-2 gap-x-2 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {allTechItems.map((item) => {
-            return (
-              <StaggerItem key={item}>
-                <div
-                  onMouseEnter={() => setHoveredItem(item)}
-                  onMouseLeave={() => setHoveredItem(null)}
-                  className="group/chip flex items-center gap-2.5 py-2 px-1 transition-all duration-200 cursor-pointer"
-                >
-                  <div className="flex h-5 w-5 shrink-0 items-center justify-center transition-transform duration-200 group-hover/chip:scale-115">
-                    {renderTechIcon(item)}
-                  </div>
-                  <span className="text-[0.72rem] font-semibold uppercase tracking-wider text-[var(--text-soft)]/60 group-hover/chip:text-[var(--text-100)] transition-colors duration-200">
-                    {item}
-                  </span>
+        <Stagger className="grid gap-[24px] md:grid-cols-2 xl:grid-cols-5" delayChildren={0.04}>
+          {siteContent.techStack.categories.map((category, categoryIndex) => (
+            <StaggerItem
+              key={category.title}
+              className={cn("h-full", categoryIndex === 1 && "xl:translate-y-8", categoryIndex === 3 && "xl:translate-y-8")}
+            >
+              <MouseGlow
+                className="h-full"
+                glowColor="var(--glow-1)"
+                containerClassName="relative h-full p-5"
+              >
+                <p className="relative z-10 font-mono text-[12px] font-bold uppercase tracking-[0.22em] text-[var(--accent-support)]">
+                  {category.title}
+                </p>
+
+                <div className="relative z-10 mt-5 space-y-2">
+                  {category.items.map((item) => (
+                    <button
+                      key={item}
+                      type="button"
+                      onMouseEnter={() => setHoveredItem(item)}
+                      onMouseLeave={() => setHoveredItem(null)}
+                      className="group/chip flex w-full items-center gap-3 rounded-[8px] border border-white/[0.08] bg-black/18 px-3 py-3 text-left transition hover:border-white/[0.18] hover:bg-white/[0.06]"
+                    >
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[7px] border border-white/[0.08] bg-white/[0.045]">
+                        <TechIcon item={item} />
+                      </span>
+                      <span className="text-[13px] font-bold uppercase tracking-[0.12em] text-[var(--text-soft)] transition group-hover/chip:text-[var(--text-100)]">
+                        {item}
+                      </span>
+                    </button>
+                  ))}
                 </div>
-              </StaggerItem>
-            );
-          })}
+              </MouseGlow>
+            </StaggerItem>
+          ))}
         </Stagger>
 
-        {/* Live Metadata Display Box - unified below the grid */}
-        <div className="min-h-[36px] flex items-center justify-center border-t border-[var(--border-color)] pt-4">
+        <div className="mt-4 min-h-20 rounded-[8px] border border-white/[0.08] bg-black/20 px-5 py-4">
           <AnimatePresence mode="wait">
             {hoveredItem ? (
               <m.div
                 key={hoveredItem}
-                initial={{ opacity: 0, y: 4 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                transition={{ duration: 0.12 }}
-                className="text-[0.68rem] font-mono leading-relaxed text-[var(--text-soft)]/60 text-center max-w-2xl"
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.18 }}
+                className="text-sm font-medium leading-relaxed text-[var(--text-muted)]"
               >
-                <strong className="text-[var(--text-100)] font-bold mr-2 uppercase tracking-widest">{hoveredItem}:</strong>
+                <strong className="mr-2 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-[var(--text-100)]">
+                  {hoveredItem}:
+                </strong>
                 {techDescriptions[hoveredItem] ?? "Modern system integration component."}
               </m.div>
             ) : null}

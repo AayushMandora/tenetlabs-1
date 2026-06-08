@@ -1,144 +1,90 @@
 "use client";
 
-import type { AccentTone, ServiceIcon } from "@/content/site-content";
+import { ArrowUpRight, BotMessageSquare, Check, MonitorSmartphone, Rocket, Workflow } from "lucide-react";
+
+import type { ServiceIcon } from "@/content/site-content";
 import { siteContent } from "@/content/site-content";
-import { Stagger, StaggerItem } from "@/components/motion/stagger";
-import { SectionHeading } from "@/components/shared/section-heading";
 import { MouseGlow } from "@/components/motion/mouse-glow";
-import { cn } from "@/lib/cn";
+import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { CornerGuides } from "@/components/shared/corner-guides";
-
-const accentMap: Record<string, string> = {
-  bright: "text-[var(--accent-primary)] border-[var(--panel-border)] bg-[var(--text-100)]/[0.02] shadow-[inset_0_0_12px_var(--glow-1)]",
-  soft: "text-[var(--accent-secondary)] border-[var(--panel-border)] bg-[var(--text-100)]/[0.01] shadow-[inset_0_0_8px_var(--glow-2)]",
-  muted: "text-[var(--accent-support)] border-[var(--panel-border)] bg-[var(--text-100)]/[0.01]",
-};
-
-const accentDot: Record<string, string> = {
-  bright: "bg-[var(--accent-primary)] shadow-[0_0_8px_var(--accent-primary)]",
-  soft: "bg-[var(--accent-secondary)] shadow-[0_0_6px_var(--accent-secondary)]",
-  muted: "bg-[var(--accent-support)]",
-};
+import { SectionHeading } from "@/components/shared/section-heading";
+import { cn } from "@/lib/cn";
 
 function Icon({ type }: { type: ServiceIcon }) {
-  if (type === "web") {
-    return (
-      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-        <rect x="3.5" y="4.5" width="17" height="15" rx="2.5" stroke="currentColor" strokeWidth="1.5" />
-        <path d="M8 9.5h8M8 13.5h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-      </svg>
-    );
-  }
+  const iconClass = "h-5 w-5";
 
-  if (type === "chat") {
-    return (
-      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-        <path
-          d="M5 7.5A2.5 2.5 0 0 1 7.5 5h9A2.5 2.5 0 0 1 19 7.5v5A2.5 2.5 0 0 1 16.5 15H10l-3.5 3v-3H7.5A2.5 2.5 0 0 1 5 12.5v-5Z"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <circle cx="9" cy="10" r="1" fill="currentColor" />
-        <circle cx="12" cy="10" r="1" fill="currentColor" />
-        <circle cx="15" cy="10" r="1" fill="currentColor" />
-      </svg>
-    );
-  }
-
-  if (type === "automation") {
-    return (
-      <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-        <path
-          d="M4.5 12h6m-6 0 2.5-2.5M4.5 12l2.5 2.5M19.5 12h-6m6 0-2.5-2.5m2.5 2.5-2.5 2.5"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.5" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-      <path
-        d="M6 14.5c0-4.4 2.3-7.2 6-9 3.7 1.8 6 4.6 6 9 0 2.7-1.7 4.7-4.3 5.2L12 22l-1.7-2.3C7.7 19.2 6 17.2 6 14.5Z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-      />
-      <circle cx="12" cy="12" r="1.6" fill="currentColor" />
-    </svg>
-  );
+  if (type === "web") return <MonitorSmartphone className={iconClass} />;
+  if (type === "chat") return <BotMessageSquare className={iconClass} />;
+  if (type === "automation") return <Workflow className={iconClass} />;
+  return <Rocket className={iconClass} />;
 }
 
 export function ServicesSection() {
   return (
-    <section id="services" className="space-y-10">
-      <SectionHeading
-        eyebrow="Services"
-        title={siteContent.services.heading}
-        description={siteContent.services.subheading}
-      />
+    <section id="services" className="space-y-12">
+      <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
+        <SectionHeading
+          eyebrow="Services"
+          title={siteContent.services.heading}
+          description={siteContent.services.subheading}
+        />
+        <div aria-hidden className="hidden h-px bg-[linear-gradient(90deg,var(--accent-primary),transparent)] lg:block" />
+      </div>
 
-      <Stagger className="grid gap-6 md:grid-cols-2" delayChildren={0.05}>
-        {siteContent.services.items.map((service) => {
-          const tone = service.accent ?? "bright";
+      <Stagger className="grid gap-[24px] lg:gap-[32px] lg:grid-cols-12" delayChildren={0.04}>
+        {siteContent.services.items.map((service, index) => (
+          <StaggerItem
+            key={service.title}
+            className={cn(
+              "h-full",
+              index === 0 && "lg:col-span-7",
+              index === 1 && "lg:col-span-5",
+              index === 2 && "lg:col-span-5",
+              index === 3 && "lg:col-span-7"
+            )}
+          >
+            <MouseGlow
+              className="h-full"
+              containerClassName="relative flex h-full flex-col p-6 sm:p-8"
+            >
+              <CornerGuides label={`srv_${service.icon}`} />
+              <div className="relative z-10 flex items-start justify-between gap-6">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[8px] border border-white/[0.12] bg-white/[0.055] text-[var(--text-100)]">
+                  <Icon type={service.icon} />
+                </span>
+                <span className="font-mono text-[12px] font-bold text-[var(--text-dim)]">
+                  0{index + 1}
+                </span>
+              </div>
 
-          return (
-            <StaggerItem key={service.title} className="h-full">
-              <MouseGlow
-                className="h-full transition-all duration-300 hover:-translate-y-1"
-                containerClassName="h-full flex flex-col justify-between p-6 sm:p-8 relative"
+              <div className="relative z-10 mt-8">
+                <h3 className="max-w-xl font-display text-2xl font-bold leading-tight text-[var(--text-100)]">
+                  {service.title}
+                </h3>
+                <p className="mt-4 max-w-2xl text-[18px] font-medium leading-[1.6] text-[var(--text-muted)]">
+                  {service.description}
+                </p>
+              </div>
+
+              <ul className="relative z-10 mt-6 grid gap-3 text-[14px] text-[var(--text-soft)] sm:grid-cols-2">
+                {service.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent-primary)]" />
+                    <span className="font-semibold leading-[1.6]">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href={service.ctaHref}
+                className="relative z-10 mt-8 inline-flex w-fit items-center gap-2 rounded-[8px] border border-white/[0.1] bg-white/[0.045] px-4 py-3 text-[14px] font-bold text-[var(--text-100)] transition hover:border-white/[0.22] hover:bg-white/[0.08]"
               >
-                <CornerGuides label={`srv_${service.icon}`} />
-                <div 
-                  className="transition-transform duration-500 [transform-style:preserve-3d]"
-                  style={{ transform: "translateZ(35px)" }}
-                >
-                  <span
-                    className={cn(
-                       "mb-6 inline-flex h-11 w-11 items-center justify-center rounded-xl border",
-                      accentMap[tone]
-                    )}
-                  >
-                    <Icon type={service.icon} />
-                  </span>
-                  <h3 className="font-display text-2xl font-semibold tracking-tight text-[var(--text-100)]">
-                    {service.title}
-                  </h3>
-                  <p className="mt-3 text-[0.92rem] leading-relaxed text-[var(--text-muted)] font-medium">
-                    {service.description}
-                  </p>
-                  <ul className="mt-6 space-y-3.5 text-sm text-[var(--text-soft)] mb-8">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-start gap-2.5">
-                        <span className={cn("mt-1.5 h-1.5 w-1.5 shrink-0 rounded-none", accentDot[tone])} />
-                        <span className="font-medium">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <a
-                  href={service.ctaHref}
-                  className="mt-auto inline-flex items-center text-sm font-semibold text-[var(--accent-primary)] transition hover:brightness-125 [transform-style:preserve-3d]"
-                  style={{ transform: "translateZ(15px)" }}
-                >
-                  {service.ctaLabel}
-                  <svg
-                    className="ml-1.5 h-4 w-4 transition-transform duration-200 group-hover/glow:translate-x-1"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
-              </MouseGlow>
-            </StaggerItem>
-          );
-        })}
+                {service.ctaLabel}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </MouseGlow>
+          </StaggerItem>
+        ))}
       </Stagger>
     </section>
   );

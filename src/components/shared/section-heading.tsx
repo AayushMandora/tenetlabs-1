@@ -37,20 +37,20 @@ export function SectionHeading({
   return (
     <header
       className={cn(
-        "relative max-w-3xl space-y-3 p-6 sm:p-8 border border-[var(--border-color)] bg-[var(--surface-800)]/10 backdrop-blur-sm overflow-hidden text-left rounded-2xl",
+        "relative max-w-4xl space-y-[24px] overflow-hidden text-left",
         align === "center" && "mx-auto text-center",
         className
       )}
     >
-      <CornerGuides label={numeral || undefined} />
-      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent-support)] font-mono">
+      <CornerGuides className="hidden md:block opacity-40" label={numeral || undefined} />
+      <p className="font-mono text-[13px] font-bold uppercase tracking-[0.24em] text-[var(--accent-support)]">
         {displayEyebrow}
       </p>
-      <h2 className="font-display text-3xl leading-tight text-[var(--text-100)] sm:text-4xl md:text-5xl pb-1 font-serif">
+      <h2 className="max-w-4xl font-display text-[32px] md:text-[40px] lg:text-[48px] font-extrabold leading-[1.15] text-[var(--text-100)]">
         {title}
       </h2>
       {description ? (
-        <p className="text-sm leading-relaxed text-[var(--text-muted)] sm:text-base font-sans mt-2">
+        <p className="max-w-2xl text-[18px] font-medium leading-[1.6] text-[var(--text-muted)]">
           {description}
         </p>
       ) : null}

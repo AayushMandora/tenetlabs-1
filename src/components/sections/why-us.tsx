@@ -14,26 +14,18 @@ export function WhyUsSection() {
         <SectionHeading eyebrow="Why Choose Us" title={siteContent.whyChooseUs.heading} />
       </Reveal>
 
-      <Stagger className="grid gap-3 md:grid-cols-2">
+      <Stagger className="grid gap-[24px] lg:gap-[32px] md:grid-cols-2">
         {siteContent.whyChooseUs.items.map((item) => (
           <StaggerItem key={item.title}>
             <MouseGlow
               className="h-full"
-              containerClassName="group relative h-full flex flex-col p-6 sm:p-8 text-left relative"
-              glowColor="var(--glow-color)"
+              containerClassName="group relative h-full flex flex-col p-5 sm:p-6 text-left"
             >
               <CornerGuides label="draft_spec" />
-              <div aria-hidden className="absolute left-0 top-0 h-[2px] w-full bg-[linear-gradient(90deg,transparent,var(--accent-primary),transparent)] opacity-30 transition-opacity duration-500 group-hover:opacity-100" />
-              <h3 
-                className="relative z-10 font-display text-2xl leading-tight text-[var(--text-100)] transition-transform duration-500 [transform-style:preserve-3d]"
-                style={{ transform: "translateZ(35px)" }}
-              >
+              <h3 className="relative z-10 font-display text-xl font-bold leading-tight text-[var(--text-100)]">
                 {item.title}
               </h3>
-              <p 
-                className="relative z-10 mt-3 text-[0.95rem] leading-relaxed text-[var(--text-muted)] transition-transform duration-500 [transform-style:preserve-3d]"
-                style={{ transform: "translateZ(20px)" }}
-              >
+              <p className="relative z-10 mt-2.5 text-[15px] font-medium leading-[1.6] text-[var(--text-muted)]">
                 {item.description}
               </p>
             </MouseGlow>
