@@ -34,60 +34,42 @@ function Avatar({ name }: { name: string }) {
 
 export function TestimonialsSection() {
   return (
-    <section className="space-y-8">
-      <Reveal>
-        <SectionHeading eyebrow="Testimonials" title={siteContent.testimonials.heading} />
-      </Reveal>
-
-      <Stagger className="grid gap-[24px] lg:gap-[32px] md:grid-cols-2 lg:grid-cols-3">
+    <div className="space-y-8 text-left">
+      <div className="grid gap-[24px] lg:gap-[32px] md:grid-cols-2 lg:grid-cols-3">
         {siteContent.testimonials.items.map((testimonial) => (
-          <StaggerItem key={testimonial.name} className="h-full">
-            <MouseGlow
-              className="h-full rounded-none border border-[var(--panel-border)] bg-[var(--panel-bg)]"
-              containerClassName="group relative flex h-full flex-col p-6 sm:p-7 overflow-hidden"
-            >
-              {/* Top accent bar */}
-              <div className="absolute top-0 left-0 h-[2px] w-full bg-[var(--text-100)]/60 opacity-75" />
+          <div
+            key={testimonial.name}
+            className="modern-card p-6 sm:p-7 flex flex-col justify-between h-full relative"
+          >
+            <div className="flex flex-col justify-between h-full">
+              {/* Stars and big quote */}
+              <div>
+                <Stars />
+                <blockquote className="relative mt-4">
+                  <p className="relative text-[14px] font-medium leading-[1.6] text-neutral-600 dark:text-neutral-300">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </p>
+                </blockquote>
+              </div>
 
-              <div className="flex flex-1 flex-col justify-between">
-                {/* Stars and big quote */}
-                <div>
-                  <Stars />
-                  <blockquote className="relative mt-4">
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute -left-2 -top-4 select-none font-display text-5xl leading-none text-[var(--text-100)]/[0.03]"
-                    >
-                      &ldquo;
-                    </span>
-                    <p className="relative text-[15px] font-medium leading-[1.6] text-[var(--text-soft)]">
-                      {testimonial.quote}
+              {/* Bottom author */}
+              <div className="mt-6 flex flex-col gap-6 border-t border-[var(--line-soft)] pt-5">
+                <div className="flex items-center gap-4">
+                  <Avatar name={testimonial.name} />
+                  <div className="min-w-0">
+                    <p className="font-sans text-[15px] font-semibold text-[var(--foreground)] truncate">
+                      {testimonial.name}
                     </p>
-                  </blockquote>
-                </div>
-
-                {/* Bottom author and badge row */}
-                <div>
-                  {/* Author row */}
-                  <div className="mt-6 flex flex-col gap-6 border-t border-[var(--border-color)] pt-5">
-                    <div className="flex items-center gap-4">
-                      <Avatar name={testimonial.name} />
-                      <div className="min-w-0">
-                        <p className="font-display text-[15px] font-semibold text-[var(--text-100)] truncate">
-                          {testimonial.name}
-                        </p>
-                        <p className="text-[12px] text-[var(--text-muted)] truncate">
-                          {testimonial.role} · {testimonial.company}
-                        </p>
-                      </div>
-                    </div>
+                    <p className="text-[12px] text-neutral-400 truncate">
+                      {testimonial.role} · {testimonial.company}
+                    </p>
                   </div>
                 </div>
               </div>
-            </MouseGlow>
-          </StaggerItem>
+            </div>
+          </div>
         ))}
-      </Stagger>
-    </section>
+      </div>
+    </div>
   );
 }

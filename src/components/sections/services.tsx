@@ -21,71 +21,62 @@ function Icon({ type }: { type: ServiceIcon }) {
 
 export function ServicesSection() {
   return (
-    <section id="services" className="space-y-12">
-      <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
-        <SectionHeading
-          eyebrow="Services"
-          title={siteContent.services.heading}
-          description={siteContent.services.subheading}
-        />
-        <div aria-hidden className="hidden h-px bg-[linear-gradient(90deg,var(--accent-primary),transparent)] lg:block" />
-      </div>
+    <div className="space-y-12 text-left">
+      <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-base sm:text-lg">
+        {siteContent.services.subheading}
+      </p>
 
-      <Stagger className="grid gap-[24px] lg:gap-[32px] lg:grid-cols-12" delayChildren={0.04}>
+      <div className="grid gap-[24px] lg:gap-[32px] lg:grid-cols-12">
         {siteContent.services.items.map((service, index) => (
-          <StaggerItem
+          <div
             key={service.title}
             className={cn(
-              "h-full",
+              "modern-card p-6 sm:p-8 flex flex-col justify-between h-full",
               index === 0 && "lg:col-span-7",
               index === 1 && "lg:col-span-5",
               index === 2 && "lg:col-span-5",
               index === 3 && "lg:col-span-7"
             )}
           >
-            <MouseGlow
-              className="h-full"
-              containerClassName="relative flex h-full flex-col p-6 sm:p-8"
-            >
-              <CornerGuides label={`srv_${service.icon}`} />
-              <div className="relative z-10 flex items-start justify-between gap-6">
-                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[8px] border border-white/[0.12] bg-white/[0.055] text-[var(--text-100)]">
+            <div>
+              <div className="flex items-start justify-between gap-6">
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center border border-[var(--line-soft)] bg-[var(--module-hover)] text-[var(--foreground)]">
                   <Icon type={service.icon} />
                 </span>
-                <span className="font-mono text-[12px] font-bold text-[var(--text-dim)]">
+                <span className="font-mono text-[12px] font-bold text-neutral-400">
                   0{index + 1}
                 </span>
               </div>
 
-              <div className="relative z-10 mt-8">
-                <h3 className="max-w-xl font-display text-2xl font-bold leading-tight text-[var(--text-100)]">
+              <div className="mt-8">
+                <h3 className="max-w-xl font-sans text-xl font-bold leading-tight text-[var(--foreground)]">
                   {service.title}
                 </h3>
-                <p className="mt-4 max-w-2xl text-[18px] font-medium leading-[1.6] text-[var(--text-muted)]">
+                <p className="mt-4 max-w-2xl text-[15px] font-medium leading-[1.6] text-neutral-500 dark:text-neutral-400">
                   {service.description}
                 </p>
               </div>
 
-              <ul className="relative z-10 mt-6 grid gap-3 text-[14px] text-[var(--text-soft)] sm:grid-cols-2">
+              <ul className="mt-6 grid gap-3 text-[13px] text-neutral-600 dark:text-neutral-300 sm:grid-cols-2">
                 {service.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent-primary)]" />
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-neutral-500" />
                     <span className="font-semibold leading-[1.6]">{feature}</span>
                   </li>
                 ))}
               </ul>
+            </div>
 
-              <a
-                href={service.ctaHref}
-                className="relative z-10 mt-8 inline-flex w-fit items-center gap-2 rounded-[8px] border border-white/[0.1] bg-white/[0.045] px-4 py-3 text-[14px] font-bold text-[var(--text-100)] transition hover:border-white/[0.22] hover:bg-white/[0.08]"
-              >
-                {service.ctaLabel}
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </MouseGlow>
-          </StaggerItem>
+            <a
+              href={service.ctaHref}
+              className="mt-8 inline-flex w-fit items-center gap-2 border border-[var(--line-soft)] bg-[var(--module-hover)] px-4 py-2.5 text-[13px] font-bold text-[var(--foreground)] transition hover:bg-neutral-500 hover:text-white"
+            >
+              {service.ctaLabel}
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
         ))}
-      </Stagger>
-    </section>
+      </div>
+    </div>
   );
 }

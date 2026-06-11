@@ -15,10 +15,10 @@ export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="space-y-8">
-      <Reveal>
-        <SectionHeading eyebrow="FAQ" title={siteContent.faq.heading} />
-      </Reveal>
+    <div className="space-y-6">
+      <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-left text-base sm:text-lg">
+        {siteContent.faq.heading}
+      </p>
 
       <div className="space-y-2">
         {siteContent.faq.items.map((item, index) => {
@@ -26,7 +26,7 @@ export function FaqSection() {
           const contentId = `faq-content-${index}`;
 
           return (
-            <article key={item.question} className={cn(panelBase, "overflow-hidden")}>
+            <article key={item.question} className="modern-card overflow-hidden text-left">
               <h3>
                 <button
                   type="button"
@@ -37,7 +37,7 @@ export function FaqSection() {
                 >
                   {item.question}
                   <span
-                    className="ml-4 inline-flex h-6 w-6 items-center justify-center rounded-none border border-[var(--panel-border)] bg-[var(--text-100)]/[0.05] text-[var(--accent-primary)]"
+                    className="ml-4 inline-flex h-6 w-6 items-center justify-center rounded-none border border-[var(--line-soft)] bg-[var(--text-100)]/[0.05] text-[var(--accent-primary)] font-mono"
                     aria-hidden
                   >
                     {isOpen ? "-" : "+"}
@@ -56,7 +56,7 @@ export function FaqSection() {
                     transition={{ duration: 0.2, ease: [0.18, 1, 0.32, 1] }}
                     className="overflow-hidden"
                   >
-                    <p className="px-[18px] pb-[14px] text-[14px] leading-[1.6] text-[var(--text-muted)]">
+                    <p className="px-[18px] pb-[14px] text-[14px] leading-[1.6] text-neutral-500 dark:text-neutral-400">
                       {item.answer}
                     </p>
                   </m.div>
@@ -66,6 +66,6 @@ export function FaqSection() {
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }

@@ -1,23 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Sans, Cormorant_Garamond } from "next/font/google";
+import { Sora, JetBrains_Mono } from "next/font/google";
 
 import { MotionProvider } from "@/components/motion/stagger";
 import { seoMetadata } from "@/lib/seo";
 
 import "./globals.css";
 
-const instrumentSans = Instrument_Sans({
-  variable: "--font-instrument",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
   display: "swap",
 });
 
-const cormorantGaramond = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
+
 
 export const metadata: Metadata = seoMetadata;
 
@@ -31,7 +31,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${instrumentSans.variable} ${cormorantGaramond.variable} bg-[var(--bg-950)] font-sans text-[var(--text-100)] antialiased`}
+        className={`${sora.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         <MotionProvider>{children}</MotionProvider>
       </body>

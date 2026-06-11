@@ -47,33 +47,30 @@ function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
 
 export function SocialProofSection() {
   return (
-    <section aria-labelledby="social-proof-heading" className="space-y-10">
-      <Reveal>
-        <SectionHeading eyebrow="Social Proof" title={siteContent.socialProof.heading} className="max-w-4xl" />
-      </Reveal>
+    <div className="space-y-8">
+      <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-left text-base sm:text-lg">
+        {siteContent.socialProof.heading}
+      </p>
 
-      <Reveal className="grid grid-cols-2 gap-px overflow-hidden rounded-[8px] border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-px overflow-hidden border border-[var(--line-soft)] bg-[var(--line-soft)] sm:grid-cols-3 lg:grid-cols-6">
         {siteContent.config.clientLogos.map((logo) => (
           <div
             key={logo}
-            className={cn(
-              subtlePanel,
-              "flex min-h-20 items-center justify-center rounded-none border-0 px-3 text-center text-[13px] font-bold uppercase tracking-[0.16em] text-[var(--text-soft)] transition hover:bg-white/[0.07]"
-            )}
+            className="flex min-h-20 items-center justify-center bg-[var(--module-bg)] px-3 text-center text-[13px] font-bold uppercase tracking-[0.16em] text-[var(--foreground)] opacity-70 transition hover:bg-[var(--module-hover)] hover:opacity-100"
           >
             {logo}
           </div>
         ))}
-      </Reveal>
+      </div>
 
-      <Reveal className="grid gap-[24px] lg:gap-[32px] sm:grid-cols-3">
+      <div className="grid gap-[24px] sm:grid-cols-3">
         {siteContent.socialProof.stats.map((stat) => (
-          <article key={stat.label} className={cn(panelBase, panelHover, "relative overflow-hidden p-5 sm:p-6")}>
+          <article key={stat.label} className="modern-card p-5 sm:p-6 text-left">
             <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-            <p className="mt-3 text-[14px] font-bold uppercase tracking-[0.16em] text-[var(--text-muted)]">{stat.label}</p>
+            <p className="mt-3 text-[14px] font-bold uppercase tracking-[0.16em] text-neutral-500 dark:text-neutral-400">{stat.label}</p>
           </article>
         ))}
-      </Reveal>
-    </section>
+      </div>
+    </div>
   );
 }

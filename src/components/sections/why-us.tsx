@@ -9,29 +9,22 @@ import { CornerGuides } from "@/components/shared/corner-guides";
 
 export function WhyUsSection() {
   return (
-    <section className="space-y-8">
-      <Reveal>
-        <SectionHeading eyebrow="Why Choose Us" title={siteContent.whyChooseUs.heading} />
-      </Reveal>
-
-      <Stagger className="grid gap-[24px] lg:gap-[32px] md:grid-cols-2">
+    <div className="space-y-8 text-left">
+      <div className="grid gap-[24px] lg:gap-[32px] md:grid-cols-2">
         {siteContent.whyChooseUs.items.map((item) => (
-          <StaggerItem key={item.title}>
-            <MouseGlow
-              className="h-full"
-              containerClassName="group relative h-full flex flex-col p-5 sm:p-6 text-left"
-            >
-              <CornerGuides label="draft_spec" />
-              <h3 className="relative z-10 font-display text-xl font-bold leading-tight text-[var(--text-100)]">
-                {item.title}
-              </h3>
-              <p className="relative z-10 mt-2.5 text-[15px] font-medium leading-[1.6] text-[var(--text-muted)]">
-                {item.description}
-              </p>
-            </MouseGlow>
-          </StaggerItem>
+          <div
+            key={item.title}
+            className="modern-card p-5 sm:p-6 flex flex-col justify-start h-full"
+          >
+            <h3 className="font-sans text-lg font-bold leading-tight text-[var(--foreground)]">
+              {item.title}
+            </h3>
+            <p className="mt-2.5 text-[14px] font-medium leading-[1.6] text-neutral-500 dark:text-neutral-400">
+              {item.description}
+            </p>
+          </div>
         ))}
-      </Stagger>
-    </section>
+      </div>
+    </div>
   );
 }

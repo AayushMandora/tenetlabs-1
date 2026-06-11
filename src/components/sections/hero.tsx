@@ -1,136 +1,136 @@
 "use client";
 
-import { useRef } from "react";
-import { m, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, CheckCircle2 } from "lucide-react";
-
-import { Floating } from "@/components/motion/floating";
-import { Reveal } from "@/components/motion/reveal";
-import { Stagger, StaggerItem } from "@/components/motion/stagger";
-import { Button } from "@/components/shared/button";
+import React from "react";
+import { ArrowUpRight, Check, Github, Linkedin, Twitter, Dribbble, Mail } from "lucide-react";
 import { siteContent } from "@/content/site-content";
-import { cn } from "@/lib/cn";
 
 function HeroVisual() {
   const visual = siteContent.hero.visual;
 
   return (
-    <div className="relative mx-auto w-full max-w-[390px]">
-      <m.div
-        className="relative overflow-hidden rounded-[8px] border border-white/[0.14] bg-[rgba(13,13,13,0.76)] shadow-sm backdrop-blur-sm"
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.18, 1, 0.32, 1], delay: 0.1 }}
-      >
-        <div aria-hidden className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.12),transparent_34%,rgba(124,58,237,0.09))]" />
-        
-        <div className="relative border-b border-white/[0.1] p-4 sm:p-5">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <p className="font-mono text-[12px] font-bold uppercase tracking-[0.24em] text-[var(--text-muted)]">
-                {visual.boardTitle}
-              </p>
-              <h3 className="mt-2 font-display text-xl font-bold text-[var(--text-100)] sm:text-2xl">
-                {siteContent.config.agencyName}
-              </h3>
-            </div>
-            <span className="rounded-[8px] border border-[var(--accent-primary)]/35 bg-[var(--accent-primary)]/12 px-2.5 py-1 text-[12px] font-bold uppercase tracking-[0.2em] text-[var(--text-100)]">
-              {visual.boardStatus}
-            </span>
+    <div className="modern-card overflow-hidden bg-[var(--module-bg)] border border-[var(--line-soft)] max-w-[400px] w-full mx-auto">
+      <div className="border-b border-[var(--line-soft)] p-4 sm:p-5">
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-neutral-400">
+              {visual.boardTitle}
+            </p>
+            <h3 className="mt-2 font-sans text-lg font-bold text-[var(--foreground)]">
+              {siteContent.config.agencyName}
+            </h3>
           </div>
-
-          <div className="mt-4 flex flex-wrap gap-2">
-            {visual.boardChips.map((chip) => (
-              <span
-                key={chip}
-                className="inline-flex items-center gap-2 rounded-[8px] border border-white/[0.1] bg-white/[0.045] px-2.5 py-1.5 text-[12px] font-bold uppercase tracking-[0.12em] text-[var(--text-soft)]"
-              >
-                <CheckCircle2 className="h-3 w-3 text-[var(--accent-primary)]" />
-                {chip}
-              </span>
-            ))}
-          </div>
+          <span className="border border-[var(--line-soft)] bg-[var(--module-hover)] px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--foreground)]">
+            {visual.boardStatus}
+          </span>
         </div>
 
-        <div className="relative grid gap-2.5 p-3.5 sm:grid-cols-3 sm:p-4">
-          {visual.miniCards.map((card, index) => (
-            <article
-              key={card.label}
-              className={cn(
-                "rounded-[8px] border border-white/[0.1] bg-black/26 p-3 backdrop-blur-sm",
-                index === 0 && "sm:translate-y-2",
-                index === 2 && "sm:-translate-y-1.5"
-              )}
+        <div className="mt-4 flex flex-wrap gap-2">
+          {visual.boardChips.map((chip) => (
+            <span
+              key={chip}
+              className="inline-flex items-center gap-2 border border-[var(--line-soft)] bg-[var(--module-hover)] px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-neutral-500 dark:text-neutral-400"
             >
-              <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-[var(--text-dim)]">
-                {card.label}
-              </p>
-              <p className="mt-2 font-display text-xl font-bold text-[var(--text-100)]">{card.value}</p>
-              <p className="mt-2 text-[12px] font-medium leading-relaxed text-[var(--text-muted)]">{card.note}</p>
-            </article>
+              <Check className="h-3 w-3" />
+              {chip}
+            </span>
           ))}
         </div>
+      </div>
 
-        <div className="relative border-t border-white/[0.1] p-3 sm:p-4">
-          <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
-            <m.div
-              className="h-full rounded-full bg-[linear-gradient(90deg,#ffffff,var(--accent-primary),#ffffff)]"
-              initial={{ x: "-100%" }}
-              animate={{ x: "0%" }}
-              transition={{ duration: 0.8, ease: [0.18, 1, 0.32, 1], delay: 0.3 }}
-            />
-          </div>
-        </div>
-      </m.div>
+      <div className="grid gap-2.5 p-4 sm:grid-cols-3">
+        {visual.miniCards.map((card) => (
+          <article
+            key={card.label}
+            className="border border-[var(--line-soft)] bg-[var(--module-hover)] p-3 text-left"
+          >
+            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-neutral-400">
+              {card.label}
+            </p>
+            <p className="mt-1 font-sans text-base font-bold text-[var(--foreground)]">{card.value}</p>
+            <p className="mt-1.5 text-[11px] font-medium leading-relaxed text-neutral-400">{card.note}</p>
+          </article>
+        ))}
+      </div>
     </div>
   );
 }
 
 export function HeroSection() {
-  const sectionRef = useRef<HTMLElement | null>(null);
+  const socialLinks = siteContent.config.socialLinks;
+  
+  // Icon helper for social links grid
+  const getSocialIcon = (label: string) => {
+    const name = label.toLowerCase();
+    if (name.includes("github")) return <Github className="h-4 w-4" />;
+    if (name.includes("linkedin")) return <Linkedin className="h-4 w-4" />;
+    if (name.includes("twitter") || name.includes("x")) return <Twitter className="h-4 w-4" />;
+    return <Dribbble className="h-4 w-4" />;
+  };
 
   return (
-    <section id="top" ref={sectionRef} className="relative">
-      <div className="grid gap-[32px] lg:gap-[48px] lg:grid-cols-[55%_45%] lg:items-center">
-        <m.div
-          className="relative z-10"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.18, 1, 0.32, 1] }}
-        >
-          <Stagger className="space-y-[32px]" delayChildren={0.03} staggerChildren={0.06}>
-            <StaggerItem>
-              <p className="max-w-3xl font-mono text-[13px] font-bold uppercase tracking-[0.28em] text-[var(--accent-support)]">
-                {siteContent.hero.eyebrow}
-              </p>
-            </StaggerItem>
+    <section id="top" className="w-full">
+      {/* 2-Column Hero Linework Banner Block */}
+      <div className="hero-linework relative w-full">
+        <div className="grid gap-8 lg:grid-cols-[58%_42%] items-center pb-8 min-h-[300px]">
+          {/* Hero Content Column */}
+          <div className="space-y-6 text-left">
+            <p className="font-mono text-[12px] font-bold uppercase tracking-[0.28em] text-neutral-500 dark:text-neutral-400">
+              {siteContent.hero.eyebrow}
+            </p>
 
-            <StaggerItem>
-              <h1 className="max-w-[780px] font-display text-[40px] md:text-[56px] lg:text-[80px] font-extrabold leading-[0.95] text-[var(--text-100)]">
-                {siteContent.hero.headline}
-              </h1>
-            </StaggerItem>
+            <h1 className="hero-name">
+              {siteContent.hero.headline}
+            </h1>
 
-            <StaggerItem>
-              <p className="max-w-2xl text-[18px] font-medium leading-[1.6] text-[var(--text-muted)]">
-                {siteContent.hero.subheadline}
-              </p>
-            </StaggerItem>
+            <p className="max-w-2xl text-[16px] sm:text-[18px] font-medium leading-[1.6] text-neutral-600 dark:text-neutral-300">
+              {siteContent.hero.subheadline}
+            </p>
 
-            <StaggerItem className="flex flex-wrap gap-[24px]">
-              <Button href={siteContent.hero.primaryCta.href}>{siteContent.hero.primaryCta.label}</Button>
-              <Button href={siteContent.hero.secondaryCta.href} variant="secondary">
+            <div className="flex flex-wrap gap-[16px] pt-2">
+              <a
+                href={siteContent.hero.primaryCta.href}
+                className="inline-flex items-center justify-center border border-[var(--line-strong)] bg-[var(--foreground)] text-[var(--page-bg)] px-5 py-3 text-[13px] font-bold uppercase tracking-[0.18em] transition hover:bg-transparent hover:text-[var(--foreground)]"
+              >
+                {siteContent.hero.primaryCta.label}
+              </a>
+              <a
+                href={siteContent.hero.secondaryCta.href}
+                className="inline-flex items-center justify-center border border-[var(--line-soft)] bg-[var(--module-hover)] text-[var(--foreground)] px-5 py-3 text-[13px] font-bold uppercase tracking-[0.18em] transition hover:bg-[var(--foreground)] hover:text-[var(--page-bg)]"
+              >
                 {siteContent.hero.secondaryCta.label}
-              </Button>
-            </StaggerItem>
-          </Stagger>
-        </m.div>
+              </a>
+            </div>
+          </div>
 
-        <div className="relative z-10">
-          <Reveal distance={15}>
+          {/* Hero Visual Column */}
+          <div className="w-full flex justify-center lg:justify-end">
             <HeroVisual />
-          </Reveal>
+          </div>
         </div>
+      </div>
+
+      {/* Repeating Diagonal Lines Hatch band separator */}
+      <div className="hatch-band" aria-hidden="true"></div>
+
+      {/* Social Links Bar aligned to Centered Grid Columns */}
+      <div className="hero-links-grid">
+        {socialLinks.slice(0, 4).map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="box-link"
+          >
+            <span className="social-icon">
+              {getSocialIcon(link.label)}
+            </span>
+            <span className="min-w-0 flex-1 truncate text-xs font-bold uppercase tracking-[0.15em] text-left">
+              {link.label}
+            </span>
+            <ArrowUpRight className="h-4 w-4 shrink-0 text-neutral-400" />
+          </a>
+        ))}
       </div>
     </section>
   );
