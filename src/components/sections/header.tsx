@@ -39,11 +39,11 @@ export function HeaderSection() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-[5000] border-b border-[var(--line-soft)] bg-[var(--page-bg)]/80 backdrop-blur-xl h-14">
-      <nav className="site-nav mx-auto h-full w-full max-w-[64rem] border-x border-[var(--line-soft)] grid grid-cols-[2.75rem_1fr_2.75rem]">
+      <nav className="site-nav mx-auto h-full w-full max-w-[75rem] border-x border-[var(--line-soft)] grid grid-cols-[2rem_1fr_2rem]">
         {/* Brand Cell */}
         <a
           href="#top"
-          className="pixel-brand flex h-full w-full items-center justify-center border-r border-[var(--line-soft)] text-sm font-black tracking-tight"
+          className="pixel-brand flex h-full w-full items-center justify-center border-r border-[var(--line-soft)] text-[10px] font-black tracking-tighter"
           aria-label="TenetLabs home"
         >
           TL

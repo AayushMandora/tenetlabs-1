@@ -209,7 +209,7 @@ export function CtaSection() {
                           className={cn(
                              "w-full py-2.5 flex items-center justify-center gap-1.5 text-[12px] font-bold uppercase tracking-widest transition-all rounded-none cursor-pointer",
                              selectedSlot
-                               ? "bg-[var(--text-100)] text-[var(--bg-950)] hover:bg-[var(--text-100)]/90 active:scale-[0.98]"
+                               ? "bg-[var(--primary)] text-[var(--primary-foreground)] hover:bg-[var(--primary)]/90 active:scale-[0.98]"
                                : "bg-[var(--text-100)]/[0.05] text-[var(--text-100)]/20 border border-[var(--border-color)] cursor-not-allowed"
                           )}
                         >
@@ -251,7 +251,7 @@ export function CtaSection() {
                           href={siteContent.config.calendlyUrl}
                           target="_blank"
                           rel="noreferrer"
-                          className="w-full py-2.5 bg-[var(--text-100)] text-[var(--bg-950)] hover:bg-[var(--text-100)]/90 active:scale-[0.98] flex items-center justify-center gap-1.5 text-[12px] font-bold uppercase tracking-widest transition-all rounded-none"
+                          className="w-full py-2.5 bg-[var(--primary)] text-[var(--primary-foreground)] hover:bg-[var(--primary)]/90 active:scale-[0.98] flex items-center justify-center gap-1.5 text-[12px] font-bold uppercase tracking-widest transition-all rounded-none"
                         >
                           Confirm details on Calendly <Sparkles className="h-3 w-3 shrink-0" />
                         </a>

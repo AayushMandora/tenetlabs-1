@@ -35,9 +35,9 @@ export default function HomePage() {
         <main className="relative flex min-h-screen flex-col items-center pt-14">
           <HeaderSection />
 
-          <div className="portfolio-shell relative z-10 mx-auto w-full max-w-[64rem]">
+          <div className="portfolio-shell relative z-10 mx-auto w-full max-w-[75rem]">
             {/* Left border strip hatch rail */}
-            <div className="portfolio-side-rail hidden lg:block" aria-hidden="true"></div>
+            <div className="portfolio-side-rail" aria-hidden="true"></div>
 
             {/* Main content grid column */}
             <div className="portfolio-content min-w-0">
@@ -87,7 +87,7 @@ export default function HomePage() {
             </div>
 
             {/* Right border strip hatch rail */}
-            <div className="portfolio-side-rail hidden lg:block" aria-hidden="true"></div>
+            <div className="portfolio-side-rail" aria-hidden="true"></div>
           </div>
         </main>
       </div>

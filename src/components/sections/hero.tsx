@@ -4,57 +4,6 @@ import React from "react";
 import { ArrowUpRight, Check, Github, Linkedin, Twitter, Dribbble, Mail } from "lucide-react";
 import { siteContent } from "@/content/site-content";
 
-function HeroVisual() {
-  const visual = siteContent.hero.visual;
-
-  return (
-    <div className="modern-card overflow-hidden bg-[var(--module-bg)] border border-[var(--line-soft)] max-w-[400px] w-full mx-auto">
-      <div className="border-b border-[var(--line-soft)] p-4 sm:p-5">
-        <div className="flex items-start justify-between gap-4">
-          <div>
-            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.24em] text-neutral-400">
-              {visual.boardTitle}
-            </p>
-            <h3 className="mt-2 font-sans text-lg font-bold text-[var(--foreground)]">
-              {siteContent.config.agencyName}
-            </h3>
-          </div>
-          <span className="border border-[var(--line-soft)] bg-[var(--module-hover)] px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--foreground)]">
-            {visual.boardStatus}
-          </span>
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          {visual.boardChips.map((chip) => (
-            <span
-              key={chip}
-              className="inline-flex items-center gap-2 border border-[var(--line-soft)] bg-[var(--module-hover)] px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.12em] text-neutral-500 dark:text-neutral-400"
-            >
-              <Check className="h-3 w-3" />
-              {chip}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="grid gap-2.5 p-4 sm:grid-cols-3">
-        {visual.miniCards.map((card) => (
-          <article
-            key={card.label}
-            className="border border-[var(--line-soft)] bg-[var(--module-hover)] p-3 text-left"
-          >
-            <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-neutral-400">
-              {card.label}
-            </p>
-            <p className="mt-1 font-sans text-base font-bold text-[var(--foreground)]">{card.value}</p>
-            <p className="mt-1.5 text-[11px] font-medium leading-relaxed text-neutral-400">{card.note}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function HeroSection() {
   const socialLinks = siteContent.config.socialLinks;
   
@@ -69,11 +18,11 @@ export function HeroSection() {
 
   return (
     <section id="top" className="w-full">
-      {/* 2-Column Hero Linework Banner Block */}
+      {/* Hero Linework Banner Block */}
       <div className="hero-linework relative w-full">
-        <div className="grid gap-8 lg:grid-cols-[58%_42%] items-center pb-8 min-h-[300px]">
+        <div className="pb-8 pt-4 min-h-[220px]">
           {/* Hero Content Column */}
-          <div className="space-y-6 text-left">
+          <div className="space-y-6 text-left max-w-3xl">
             <p className="font-mono text-[12px] font-bold uppercase tracking-[0.28em] text-neutral-500 dark:text-neutral-400">
               {siteContent.hero.eyebrow}
             </p>
@@ -100,11 +49,6 @@ export function HeroSection() {
                 {siteContent.hero.secondaryCta.label}
               </a>
             </div>
-          </div>
-
-          {/* Hero Visual Column */}
-          <div className="w-full flex justify-center lg:justify-end">
-            <HeroVisual />
           </div>
         </div>
       </div>
